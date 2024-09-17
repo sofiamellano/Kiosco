@@ -26,7 +26,6 @@ public partial class KioscoContext : DbContext
 
     public virtual DbSet<DetalleVenta> Detallesventas { get; set; }
 
-    public virtual DbSet<Efmigrationshistory> Efmigrationshistories { get; set; }
 
     public virtual DbSet<Localidad> Localidades { get; set; }
 
@@ -51,6 +50,7 @@ public partial class KioscoContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+     
         modelBuilder
             .UseCollation("utf8mb4_general_ci")
             .HasCharSet("utf8mb4");
@@ -138,15 +138,7 @@ public partial class KioscoContext : DbContext
                 .HasConstraintName("FK_DetallesVentas_Ventas_VentaId");
         });
 
-        modelBuilder.Entity<Efmigrationshistory>(entity =>
-        {
-            entity.HasKey(e => e.MigrationId).HasName("PRIMARY");
 
-            entity.ToTable("__efmigrationshistory");
-
-            entity.Property(e => e.MigrationId).HasMaxLength(150);
-            entity.Property(e => e.ProductVersion).HasMaxLength(32);
-        });
 
         modelBuilder.Entity<Localidad>(entity =>
         {
