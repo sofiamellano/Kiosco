@@ -12,26 +12,24 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KioscoInformaticoBackend.Migrations
 {
     [DbContext(typeof(KioscoContext))]
-    [Migration("20240906172511_agregadodeDatos")]
-    partial class agregadodeDatos
+    [Migration("20241008192151_inicio")]
+    partial class inicio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseCollation("utf8mb4_general_ci")
                 .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            MySqlModelBuilderExtensions.HasCharSet(modelBuilder, "utf8mb4");
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Cliente", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
@@ -39,12 +37,14 @@ namespace KioscoInformaticoBackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<DateTime>("FechaNacimiento")
-                        .HasMaxLength(6)
                         .HasColumnType("datetime(6)");
 
                     b.Property<int?>("LocalidadId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -54,18 +54,18 @@ namespace KioscoInformaticoBackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id")
-                        .HasName("PRIMARY");
+                    b.HasKey("Id");
 
-                    b.HasIndex(new[] { "LocalidadId" }, "IX_Clientes_LocalidadId");
+                    b.HasIndex("LocalidadId");
 
-                    b.ToTable("clientes", (string)null);
+                    b.ToTable("Clientes");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Direccion = "Calle Falsa 123",
+                            Eliminado = false,
                             FechaNacimiento = new DateTime(1985, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocalidadId = 1,
                             Nombre = "Juan Pérez",
@@ -75,6 +75,7 @@ namespace KioscoInformaticoBackend.Migrations
                         {
                             Id = 2,
                             Direccion = "Avenida Siempre Viva 742",
+                            Eliminado = false,
                             FechaNacimiento = new DateTime(1990, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocalidadId = 2,
                             Nombre = "María López",
@@ -84,6 +85,7 @@ namespace KioscoInformaticoBackend.Migrations
                         {
                             Id = 3,
                             Direccion = "Boulevard de los Sueños Rotos 101",
+                            Eliminado = false,
                             FechaNacimiento = new DateTime(1978, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocalidadId = 3,
                             Nombre = "Carlos García",
@@ -93,6 +95,7 @@ namespace KioscoInformaticoBackend.Migrations
                         {
                             Id = 4,
                             Direccion = "Ruta Nacional 19 Km 58",
+                            Eliminado = false,
                             FechaNacimiento = new DateTime(2000, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocalidadId = 1,
                             Nombre = "Ana Martínez",
@@ -102,6 +105,7 @@ namespace KioscoInformaticoBackend.Migrations
                         {
                             Id = 5,
                             Direccion = "Calle del Sol 456",
+                            Eliminado = false,
                             FechaNacimiento = new DateTime(1995, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LocalidadId = 2,
                             Nombre = "Pedro Fernández",
@@ -109,43 +113,43 @@ namespace KioscoInformaticoBackend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Compra", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Compra", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)")
-                        .HasColumnName("ID");
+                        .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<DateTime>("Fecha")
-                        .HasMaxLength(6)
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("FormaDePago")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<int>("Iva")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<int?>("ProveedorId")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("ProveedorID");
+                        .HasColumnType("int");
 
                     b.Property<int>("Total")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
-                    b.HasKey("Id")
-                        .HasName("PRIMARY");
+                    b.HasKey("Id");
 
-                    b.HasIndex(new[] { "ProveedorId" }, "IX_Compras_ProveedorID");
+                    b.HasIndex("ProveedorId");
 
-                    b.ToTable("compras", (string)null);
+                    b.ToTable("Compras");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            Eliminado = false,
                             Fecha = new DateTime(2021, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FormaDePago = 0,
                             Iva = 21,
@@ -155,6 +159,7 @@ namespace KioscoInformaticoBackend.Migrations
                         new
                         {
                             Id = 2,
+                            Eliminado = false,
                             Fecha = new DateTime(2021, 5, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FormaDePago = 1,
                             Iva = 10,
@@ -164,6 +169,7 @@ namespace KioscoInformaticoBackend.Migrations
                         new
                         {
                             Id = 3,
+                            Eliminado = false,
                             Fecha = new DateTime(2021, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FormaDePago = 2,
                             Iva = 5,
@@ -173,6 +179,7 @@ namespace KioscoInformaticoBackend.Migrations
                         new
                         {
                             Id = 4,
+                            Eliminado = false,
                             Fecha = new DateTime(2021, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FormaDePago = 0,
                             Iva = 0,
@@ -181,32 +188,34 @@ namespace KioscoInformaticoBackend.Migrations
                         });
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.DetalleCompra", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.DetalleCompra", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Cantidad")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<int>("CompraId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<decimal>("PrecioUnitario")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("ProductoId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
-                    b.HasKey("Id")
-                        .HasName("PRIMARY");
+                    b.HasKey("Id");
 
-                    b.HasIndex(new[] { "ProductoId" }, "IX_DetallesCompras_ProductoId");
+                    b.HasIndex("ProductoId");
 
-                    b.ToTable("detallescompras", (string)null);
+                    b.ToTable("Detallescompras");
 
                     b.HasData(
                         new
@@ -214,6 +223,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Id = 1,
                             Cantidad = 1,
                             CompraId = 1,
+                            Eliminado = false,
                             PrecioUnitario = 2650m,
                             ProductoId = 1
                         },
@@ -222,6 +232,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Id = 2,
                             Cantidad = 2,
                             CompraId = 2,
+                            Eliminado = false,
                             PrecioUnitario = 2450m,
                             ProductoId = 2
                         },
@@ -230,45 +241,49 @@ namespace KioscoInformaticoBackend.Migrations
                             Id = 3,
                             Cantidad = 1,
                             CompraId = 3,
+                            Eliminado = false,
                             PrecioUnitario = 2550m,
                             ProductoId = 3
                         });
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.DetalleVenta", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.DetalleVenta", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Cantidad")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<decimal>("PrecioUnitario")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("ProductoId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<int>("VentaId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
-                    b.HasKey("Id")
-                        .HasName("PRIMARY");
+                    b.HasKey("Id");
 
-                    b.HasIndex(new[] { "ProductoId" }, "IX_DetallesVentas_ProductoId");
+                    b.HasIndex("ProductoId");
 
-                    b.HasIndex(new[] { "VentaId" }, "IX_DetallesVentas_VentaId");
+                    b.HasIndex("VentaId");
 
-                    b.ToTable("detallesventas", (string)null);
+                    b.ToTable("Detallesventas");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Cantidad = 1,
+                            Eliminado = false,
                             PrecioUnitario = 2650m,
                             ProductoId = 1,
                             VentaId = 1
@@ -277,6 +292,7 @@ namespace KioscoInformaticoBackend.Migrations
                         {
                             Id = 2,
                             Cantidad = 2,
+                            Eliminado = false,
                             PrecioUnitario = 2450m,
                             ProductoId = 2,
                             VentaId = 2
@@ -285,110 +301,110 @@ namespace KioscoInformaticoBackend.Migrations
                         {
                             Id = 3,
                             Cantidad = 1,
+                            Eliminado = false,
                             PrecioUnitario = 2550m,
                             ProductoId = 3,
                             VentaId = 3
                         });
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Efmigrationshistory", b =>
-                {
-                    b.Property<string>("MigrationId")
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
-
-                    b.Property<string>("ProductVersion")
-                        .IsRequired()
-                        .HasMaxLength(32)
-                        .HasColumnType("varchar(32)");
-
-                    b.HasKey("MigrationId")
-                        .HasName("PRIMARY");
-
-                    b.ToTable("__efmigrationshistory", (string)null);
-                });
-
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Localidad", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Localidad", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id")
-                        .HasName("PRIMARY");
+                    b.HasKey("Id");
 
-                    b.ToTable("localidades", (string)null);
+                    b.ToTable("Localidades");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            Eliminado = false,
                             Nombre = "San Justo"
                         },
                         new
                         {
                             Id = 2,
+                            Eliminado = false,
                             Nombre = "Videla"
                         },
                         new
                         {
                             Id = 3,
+                            Eliminado = false,
                             Nombre = "Escalada"
                         });
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Producto", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Producto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("Oferta")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<decimal>("Precio")
                         .HasColumnType("decimal(65,30)");
 
-                    b.HasKey("Id")
-                        .HasName("PRIMARY");
+                    b.HasKey("Id");
 
-                    b.ToTable("productos", (string)null);
+                    b.ToTable("Productos");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            Eliminado = false,
                             Nombre = "Coca Cola 2lts",
+                            Oferta = false,
                             Precio = 2650m
                         },
                         new
                         {
                             Id = 2,
+                            Eliminado = false,
                             Nombre = "Sprite 2lts",
+                            Oferta = false,
                             Precio = 2450m
                         },
                         new
                         {
                             Id = 3,
+                            Eliminado = false,
                             Nombre = "Fanta 2lts",
+                            Oferta = false,
                             Precio = 2550m
                         });
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Proveedor", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Proveedor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
@@ -397,14 +413,17 @@ namespace KioscoInformaticoBackend.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<int>("CondicionIva")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Direccion")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int?>("LocalidadId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -414,12 +433,11 @@ namespace KioscoInformaticoBackend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id")
-                        .HasName("PRIMARY");
+                    b.HasKey("Id");
 
-                    b.HasIndex(new[] { "LocalidadId" }, "IX_Proveedores_LocalidadId");
+                    b.HasIndex("LocalidadId");
 
-                    b.ToTable("proveedores", (string)null);
+                    b.ToTable("Proveedores");
 
                     b.HasData(
                         new
@@ -428,6 +446,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000001",
                             CondicionIva = 0,
                             Direccion = "Calle 1",
+                            Eliminado = false,
                             LocalidadId = 1,
                             Nombre = "Proveedor A",
                             Telefonos = "111111111"
@@ -438,6 +457,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000002",
                             CondicionIva = 5,
                             Direccion = "Calle 2",
+                            Eliminado = false,
                             LocalidadId = 2,
                             Nombre = "Proveedor B",
                             Telefonos = "222222222"
@@ -448,6 +468,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000003",
                             CondicionIva = 4,
                             Direccion = "Calle 3",
+                            Eliminado = false,
                             LocalidadId = 3,
                             Nombre = "Proveedor C",
                             Telefonos = "333333333"
@@ -458,6 +479,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000004",
                             CondicionIva = 2,
                             Direccion = "Calle 4",
+                            Eliminado = false,
                             LocalidadId = 1,
                             Nombre = "Proveedor D",
                             Telefonos = "444444444"
@@ -468,6 +490,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000005",
                             CondicionIva = 3,
                             Direccion = "Calle 5",
+                            Eliminado = false,
                             LocalidadId = 1,
                             Nombre = "Proveedor E",
                             Telefonos = "555555555"
@@ -478,6 +501,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000006",
                             CondicionIva = 1,
                             Direccion = "Calle 6",
+                            Eliminado = false,
                             LocalidadId = 2,
                             Nombre = "Proveedor F",
                             Telefonos = "666666666"
@@ -488,6 +512,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000007",
                             CondicionIva = 0,
                             Direccion = "Calle 7",
+                            Eliminado = false,
                             LocalidadId = 2,
                             Nombre = "Proveedor G",
                             Telefonos = "777777777"
@@ -498,6 +523,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000008",
                             CondicionIva = 6,
                             Direccion = "Calle 8",
+                            Eliminado = false,
                             LocalidadId = 3,
                             Nombre = "Proveedor H",
                             Telefonos = "888888888"
@@ -508,6 +534,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000009",
                             CondicionIva = 5,
                             Direccion = "Calle 9",
+                            Eliminado = false,
                             LocalidadId = 3,
                             Nombre = "Proveedor I",
                             Telefonos = "999999999"
@@ -518,29 +545,32 @@ namespace KioscoInformaticoBackend.Migrations
                             Cbu = "0000003100010000000010",
                             CondicionIva = 2,
                             Direccion = "Calle 10",
+                            Eliminado = false,
                             LocalidadId = 1,
                             Nombre = "Proveedor J",
                             Telefonos = "101010101"
                         });
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Venta", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Venta", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClienteId")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Eliminado")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("Fecha")
-                        .HasMaxLength(6)
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("FormaPago")
-                        .HasColumnType("int(11)");
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Iva")
                         .HasColumnType("decimal(65,30)");
@@ -548,19 +578,19 @@ namespace KioscoInformaticoBackend.Migrations
                     b.Property<decimal>("Total")
                         .HasColumnType("decimal(65,30)");
 
-                    b.HasKey("Id")
-                        .HasName("PRIMARY");
+                    b.HasKey("Id");
 
-                    b.HasIndex(new[] { "ClienteId" }, "IX_Ventas_ClienteId");
+                    b.HasIndex("ClienteId");
 
-                    b.ToTable("ventas", (string)null);
+                    b.ToTable("Ventas");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             ClienteId = 1,
-                            Fecha = new DateTime(2024, 9, 6, 14, 25, 11, 254, DateTimeKind.Local).AddTicks(2179),
+                            Eliminado = false,
+                            Fecha = new DateTime(2024, 10, 8, 16, 21, 50, 949, DateTimeKind.Local).AddTicks(2151),
                             FormaPago = 0,
                             Iva = 21m,
                             Total = 3000m
@@ -569,7 +599,8 @@ namespace KioscoInformaticoBackend.Migrations
                         {
                             Id = 2,
                             ClienteId = 2,
-                            Fecha = new DateTime(2024, 9, 6, 14, 25, 11, 254, DateTimeKind.Local).AddTicks(2193),
+                            Eliminado = false,
+                            Fecha = new DateTime(2024, 10, 8, 16, 21, 50, 949, DateTimeKind.Local).AddTicks(2166),
                             FormaPago = 1,
                             Iva = 10m,
                             Total = 5000m
@@ -578,115 +609,80 @@ namespace KioscoInformaticoBackend.Migrations
                         {
                             Id = 3,
                             ClienteId = 1,
-                            Fecha = new DateTime(2024, 9, 6, 14, 25, 11, 254, DateTimeKind.Local).AddTicks(2194),
+                            Eliminado = false,
+                            Fecha = new DateTime(2024, 10, 8, 16, 21, 50, 949, DateTimeKind.Local).AddTicks(2168),
                             FormaPago = 2,
                             Iva = 21m,
                             Total = 8000m
                         });
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Cliente", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Cliente", b =>
                 {
-                    b.HasOne("KioscoInformaticoBackend.Models.Localidad", "Localidad")
-                        .WithMany("Clientes")
-                        .HasForeignKey("LocalidadId")
-                        .HasConstraintName("FK_Clientes_Localidades_LocalidadId");
+                    b.HasOne("KioscoInformaticoServices.Models.Localidad", "Localidad")
+                        .WithMany()
+                        .HasForeignKey("LocalidadId");
 
                     b.Navigation("Localidad");
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Compra", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Compra", b =>
                 {
-                    b.HasOne("KioscoInformaticoBackend.Models.Proveedor", "Proveedor")
-                        .WithMany("Compras")
-                        .HasForeignKey("ProveedorId")
-                        .HasConstraintName("FK_Compras_Proveedores_ProveedorID");
+                    b.HasOne("KioscoInformaticoServices.Models.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId");
 
                     b.Navigation("Proveedor");
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.DetalleCompra", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.DetalleCompra", b =>
                 {
-                    b.HasOne("KioscoInformaticoBackend.Models.Producto", "Producto")
-                        .WithMany("Detallescompras")
+                    b.HasOne("KioscoInformaticoServices.Models.Producto", "Producto")
+                        .WithMany()
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_DetallesCompras_Productos_ProductoId");
+                        .IsRequired();
 
                     b.Navigation("Producto");
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.DetalleVenta", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.DetalleVenta", b =>
                 {
-                    b.HasOne("KioscoInformaticoBackend.Models.Producto", "Producto")
-                        .WithMany("Detallesventa")
+                    b.HasOne("KioscoInformaticoServices.Models.Producto", "Producto")
+                        .WithMany()
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_DetallesVentas_Productos_ProductoId");
+                        .IsRequired();
 
-                    b.HasOne("KioscoInformaticoBackend.Models.Venta", "Venta")
-                        .WithMany("Detallesventa")
+                    b.HasOne("KioscoInformaticoServices.Models.Venta", "Venta")
+                        .WithMany()
                         .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_DetallesVentas_Ventas_VentaId");
+                        .IsRequired();
 
                     b.Navigation("Producto");
 
                     b.Navigation("Venta");
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Proveedor", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Proveedor", b =>
                 {
-                    b.HasOne("KioscoInformaticoBackend.Models.Localidad", "Localidad")
-                        .WithMany("Proveedores")
-                        .HasForeignKey("LocalidadId")
-                        .HasConstraintName("FK_Proveedores_Localidades_LocalidadId");
+                    b.HasOne("KioscoInformaticoServices.Models.Localidad", "Localidad")
+                        .WithMany()
+                        .HasForeignKey("LocalidadId");
 
                     b.Navigation("Localidad");
                 });
 
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Venta", b =>
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Venta", b =>
                 {
-                    b.HasOne("KioscoInformaticoBackend.Models.Cliente", "Cliente")
-                        .WithMany("Venta")
+                    b.HasOne("KioscoInformaticoServices.Models.Cliente", "Cliente")
+                        .WithMany()
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_Ventas_Clientes_ClienteId");
+                        .IsRequired();
 
                     b.Navigation("Cliente");
-                });
-
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Cliente", b =>
-                {
-                    b.Navigation("Venta");
-                });
-
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Localidad", b =>
-                {
-                    b.Navigation("Clientes");
-
-                    b.Navigation("Proveedores");
-                });
-
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Producto", b =>
-                {
-                    b.Navigation("Detallescompras");
-
-                    b.Navigation("Detallesventa");
-                });
-
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Proveedor", b =>
-                {
-                    b.Navigation("Compras");
-                });
-
-            modelBuilder.Entity("KioscoInformaticoBackend.Models.Venta", b =>
-                {
-                    b.Navigation("Detallesventa");
                 });
 #pragma warning restore 612, 618
         }

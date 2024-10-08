@@ -100,8 +100,8 @@ namespace KioscoInformaticoBackend.Controllers
             {
                 return NotFound();
             }
-
-            _context.Clientes.Remove(cliente);
+            cliente.Eliminado = true;
+            _context.Clientes.Update(cliente);
             await _context.SaveChangesAsync();
 
             return NoContent();
