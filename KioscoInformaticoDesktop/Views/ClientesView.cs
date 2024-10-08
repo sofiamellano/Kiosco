@@ -1,6 +1,7 @@
 ﻿using KioscoInformaticoServices.Interfaces;
 using KioscoInformaticoServices.Models;
 using KioscoInformaticoServices.Services;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,6 +39,7 @@ namespace KioscoInformaticoDesktop.Views
         {
             var clientes = await clienteService.GetAllAsync(null);
             ListClientes.DataSource = clientes;
+            dataGridClientesView.Columns[5].Visible = false;
         }
 
         private void iconButtonAgregar_Click(object sender, EventArgs e)
@@ -53,6 +55,7 @@ namespace KioscoInformaticoDesktop.Views
                 clienteCurrent.Direccion = txtDireccion.Text;
                 clienteCurrent.Telefonos = txtTelefonos.Text;
                 clienteCurrent.LocalidadId = (int)comboLocalidades.SelectedValue;
+                clienteCurrent.FechaNacimiento = dateTimeFechaNacimiento.Value;
                 await clienteService.UpdateAsync(clienteCurrent);
                 clienteCurrent = null;
             }
@@ -63,7 +66,8 @@ namespace KioscoInformaticoDesktop.Views
                     Nombre = txtNombre.Text,
                     Direccion = txtDireccion.Text,
                     Telefonos = txtTelefonos.Text,
-                    LocalidadId = (int)comboLocalidades.SelectedValue
+                    LocalidadId = (int)comboLocalidades.SelectedValue,
+                    FechaNacimiento = dateTimeFechaNacimiento.Value
                 };
                 await clienteService.AddAsync(cliente);
             }
@@ -91,6 +95,7 @@ namespace KioscoInformaticoDesktop.Views
             txtDireccion.Text = clienteCurrent.Direccion;
             txtTelefonos.Text = clienteCurrent.Telefonos;
             comboLocalidades.SelectedValue = clienteCurrent.LocalidadId;
+            dateTimeFechaNacimiento.Value = clienteCurrent.FechaNacimiento;
             tabControl.SelectTab(tabPageAgregarEditar);
         }
 

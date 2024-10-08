@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label1 = new Label();
             tabControl = new TabControl();
@@ -40,6 +42,8 @@
             label3 = new Label();
             dataGridClientesView = new DataGridView();
             tabPageAgregarEditar = new TabPage();
+            dateTimeFechaNacimiento = new DateTimePicker();
+            label7 = new Label();
             comboLocalidades = new ComboBox();
             label6 = new Label();
             txtTelefonos = new TextBox();
@@ -50,11 +54,13 @@
             btnGuardar = new FontAwesome.Sharp.IconButton();
             txtNombre = new TextBox();
             label2 = new Label();
+            clienteBindingSource = new BindingSource(components);
             panel1.SuspendLayout();
             tabControl.SuspendLayout();
             tabPageLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridClientesView).BeginInit();
             tabPageAgregarEditar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)clienteBindingSource).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -211,6 +217,16 @@
             dataGridClientesView.AllowUserToDeleteRows = false;
             dataGridClientesView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridClientesView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridClientesView.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridClientesView.Location = new Point(4, 122);
             dataGridClientesView.Margin = new Padding(4, 5, 4, 5);
             dataGridClientesView.Name = "dataGridClientesView";
@@ -222,6 +238,8 @@
             // 
             // tabPageAgregarEditar
             // 
+            tabPageAgregarEditar.Controls.Add(dateTimeFechaNacimiento);
+            tabPageAgregarEditar.Controls.Add(label7);
             tabPageAgregarEditar.Controls.Add(comboLocalidades);
             tabPageAgregarEditar.Controls.Add(label6);
             tabPageAgregarEditar.Controls.Add(txtTelefonos);
@@ -241,10 +259,29 @@
             tabPageAgregarEditar.Text = "Agregar/Editar";
             tabPageAgregarEditar.UseVisualStyleBackColor = true;
             // 
+            // dateTimeFechaNacimiento
+            // 
+            dateTimeFechaNacimiento.Format = DateTimePickerFormat.Short;
+            dateTimeFechaNacimiento.Location = new Point(551, 329);
+            dateTimeFechaNacimiento.Name = "dateTimeFechaNacimiento";
+            dateTimeFechaNacimiento.Size = new Size(155, 31);
+            dateTimeFechaNacimiento.TabIndex = 4;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(334, 327);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(153, 25);
+            label7.TabIndex = 17;
+            label7.Text = "Fecha nacimiento:";
+            // 
             // comboLocalidades
             // 
+            comboLocalidades.DropDownStyle = ComboBoxStyle.DropDownList;
             comboLocalidades.FormattingEnabled = true;
-            comboLocalidades.Location = new Point(552, 259);
+            comboLocalidades.Location = new Point(552, 247);
             comboLocalidades.Name = "comboLocalidades";
             comboLocalidades.Size = new Size(279, 33);
             comboLocalidades.TabIndex = 3;
@@ -252,7 +289,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(387, 259);
+            label6.Location = new Point(394, 250);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(91, 25);
@@ -305,7 +342,7 @@
             btnCancelar.Margin = new Padding(4, 5, 4, 5);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(143, 100);
-            btnCancelar.TabIndex = 5;
+            btnCancelar.TabIndex = 6;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.TextAlign = ContentAlignment.MiddleRight;
             btnCancelar.UseVisualStyleBackColor = true;
@@ -321,7 +358,7 @@
             btnGuardar.Margin = new Padding(4, 5, 4, 5);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(143, 100);
-            btnGuardar.TabIndex = 4;
+            btnGuardar.TabIndex = 5;
             btnGuardar.Text = "&Guardar";
             btnGuardar.TextAlign = ContentAlignment.MiddleRight;
             btnGuardar.UseVisualStyleBackColor = true;
@@ -345,6 +382,10 @@
             label2.TabIndex = 8;
             label2.Text = "Nombre:";
             // 
+            // clienteBindingSource
+            // 
+            clienteBindingSource.DataSource = typeof(KioscoInformaticoServices.Models.Cliente);
+            // 
             // ClientesView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -364,6 +405,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridClientesView).EndInit();
             tabPageAgregarEditar.ResumeLayout(false);
             tabPageAgregarEditar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)clienteBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -391,5 +433,8 @@
         private FontAwesome.Sharp.IconButton iconButtonEliminar;
         private Label label6;
         private ComboBox comboLocalidades;
+        private DateTimePicker dateTimeFechaNacimiento;
+        private Label label7;
+        private BindingSource clienteBindingSource;
     }
 }
