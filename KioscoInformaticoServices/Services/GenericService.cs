@@ -20,7 +20,11 @@ namespace KioscoInformaticoServices.Services
         {
             this.client = new HttpClient();
             this.options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
-            var urlApi = Properties.Resources.UrlApi;
+
+            string urlApi = Properties.Resources.UrlApi;
+            if (Properties.Resources.Remoto=="false")
+                urlApi = Properties.Resources.UrlApiLocal;
+
             this._endpoint = urlApi + ApiEndpoints.GetEndpoint(typeof(T).Name);
         }
 

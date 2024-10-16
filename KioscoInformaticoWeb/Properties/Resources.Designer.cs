@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KioscoInformaticoServices.Properties {
+namespace KioscoInformaticoWeb.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KioscoInformaticoServices.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KioscoInformaticoServices.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KioscoInformaticoWeb.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,33 +57,6 @@ namespace KioscoInformaticoServices.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a true.
-        /// </summary>
-        internal static string Remoto {
-            get {
-                return ResourceManager.GetString("Remoto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a https://datakioscoale.azurewebsites.net/api/.
-        /// </summary>
-        internal static string UrlApi {
-            get {
-                return ResourceManager.GetString("UrlApi", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a https://localhost:7238/api/.
-        /// </summary>
-        internal static string UrlApiLocal {
-            get {
-                return ResourceManager.GetString("UrlApiLocal", resourceCulture);
             }
         }
     }
