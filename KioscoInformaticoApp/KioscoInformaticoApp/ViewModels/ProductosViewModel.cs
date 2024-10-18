@@ -1,4 +1,5 @@
-﻿using KioscoInformaticoApp.Class;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using KioscoInformaticoApp.Class;
 using KioscoInformaticoServices.Models;
 using KioscoInformaticoServices.Services;
 using System;
@@ -50,13 +51,20 @@ namespace KioscoInformaticoApp.ViewModels
         
         public Command ObtenerProductosCommand { get; }
         public Command FiltrarProductosCommand { get; }
+        public Command AgregarProductoCommand { get; }
 
         public ProductosViewModel()
         {
             ObtenerProductosCommand = new Command(async () => await ObtenerProductos());
             FiltrarProductosCommand = new Command(async () => await FiltrarProductos());
+            AgregarProductoCommand = new Command(async () => await AgregarProducto());
             ObtenerProductos();
 
+        }
+
+        private async Task AgregarProducto()
+        {
+            WeakReferenceMessenger.Default.Send(new Message("AgregarProducto"));
         }
 
         public async Task FiltrarProductos()
@@ -65,7 +73,7 @@ namespace KioscoInformaticoApp.ViewModels
             Productos = new ObservableCollection<Producto>(productosFiltrados);
         }
 
-        private async Task ObtenerProductos()
+        public async Task ObtenerProductos()
         {
             FilterProducts = string.Empty;
             IsRefreshing = true; // Asegúrate de que IsRefreshing se establezca en true al inicio
