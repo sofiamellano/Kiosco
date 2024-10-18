@@ -7,7 +7,8 @@
     <ContentPage.BindingContext>
         <viewModels:ProductosViewModel />
     </ContentPage.BindingContext>
-    <VerticalStackLayout>
+    <ScrollView HeightRequest="300" HorizontalOptions="Center">
+        <VerticalStackLayout>
         <Label 
             Text="Lista de productos"
             VerticalOptions="Center" 
@@ -19,7 +20,7 @@
                VerticalOptions="Center"
                Margin="0,10,0,10">
         </Entry>
-        <ScrollView HeightRequest="300" HorizontalOptions="Center">
+        
             <ListView 
                 ItemsSource="{Binding Productos}"
                 SelectionMode="Single"
@@ -34,6 +35,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </ScrollView>
-    </VerticalStackLayout>
+            <Button Text="Agregar producto"
+                Command="{Binding AgregarProductoCommand}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="0,10,0,10"/>
+        
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

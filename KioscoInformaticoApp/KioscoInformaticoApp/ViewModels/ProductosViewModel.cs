@@ -47,17 +47,7 @@ namespace KioscoInformaticoApp.ViewModels
 		}
         private List<Producto>? productosListToFilter;
 
-        private bool activityStart;
-        public bool ActivityStart
-        {
-            get { return activityStart; }
-            set
-            {
-                activityStart = value;
-                OnPropertyChanged();
-            }
-        }
-
+        
         public Command ObtenerProductosCommand { get; }
         public Command FiltrarProductosCommand { get; }
 
@@ -78,11 +68,9 @@ namespace KioscoInformaticoApp.ViewModels
         private async Task ObtenerProductos()
         {
             FilterProducts = string.Empty;
-            ActivityStart = true;
             IsRefreshing = true; // Asegúrate de que IsRefreshing se establezca en true al inicio
             productosListToFilter = await productoService.GetAllAsync();
             Productos = new ObservableCollection<Producto>(productosListToFilter);
-            ActivityStart = false;
             IsRefreshing = false; // Establece IsRefreshing en false al final
         }
     }
