@@ -44,5 +44,11 @@ namespace KioscoInformaticoDesktop
             ProveedoresView proveedoresView = new ProveedoresView();
             proveedoresView.ShowDialog();
         }
+
+        private void iconMenuItem8_Click(object sender, EventArgs e)
+        {
+            VentasView ventasView = new VentasView();
+            ventasView.ShowDialog();
+        }
     }
 }

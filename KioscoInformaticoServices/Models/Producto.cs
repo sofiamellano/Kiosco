@@ -18,4 +18,9 @@ public partial class Producto
     public bool Eliminado { get; set; } = false;
     public bool Oferta { get; set; } = false;
 
+    public override string ToString()
+    {
+        return Nombre;
+    }
+
 }

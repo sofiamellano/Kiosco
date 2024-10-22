@@ -61,7 +61,7 @@ namespace KioscoInformaticoServices.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a true.
+        ///   Busca una cadena traducida similar a false.
         /// </summary>
         internal static string Remoto {
             get {

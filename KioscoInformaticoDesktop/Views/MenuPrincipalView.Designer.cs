@@ -34,11 +34,12 @@
             ItemMenuLocalidades = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem4 = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem5 = new FontAwesome.Sharp.IconMenuItem();
+            iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem6 = new FontAwesome.Sharp.IconMenuItem();
             localidadesToolStripMenuItem = new ToolStripMenuItem();
             iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             ItemMenuSalirDelSistema = new FontAwesome.Sharp.IconMenuItem();
-            iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
+            iconMenuItem8 = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,6 +55,7 @@
             // 
             // iconMenuItem1
             // 
+            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { iconMenuItem8 });
             iconMenuItem1.IconChar = FontAwesome.Sharp.IconChar.House;
             iconMenuItem1.IconColor = Color.Black;
             iconMenuItem1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -78,7 +80,7 @@
             ItemMenuLocalidades.IconColor = Color.Black;
             ItemMenuLocalidades.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ItemMenuLocalidades.Name = "ItemMenuLocalidades";
-            ItemMenuLocalidades.Size = new Size(270, 34);
+            ItemMenuLocalidades.Size = new Size(213, 34);
             ItemMenuLocalidades.Text = "Localidades";
             ItemMenuLocalidades.Click += ItemMenuLocalidades_Click;
             // 
@@ -88,7 +90,7 @@
             iconMenuItem4.IconColor = Color.Black;
             iconMenuItem4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuItem4.Name = "iconMenuItem4";
-            iconMenuItem4.Size = new Size(270, 34);
+            iconMenuItem4.Size = new Size(213, 34);
             iconMenuItem4.Text = "Productos";
             iconMenuItem4.Click += iconMenuItem4_Click;
             // 
@@ -98,9 +100,19 @@
             iconMenuItem5.IconColor = Color.Black;
             iconMenuItem5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconMenuItem5.Name = "iconMenuItem5";
-            iconMenuItem5.Size = new Size(270, 34);
+            iconMenuItem5.Size = new Size(213, 34);
             iconMenuItem5.Text = "Clientes";
             iconMenuItem5.Click += iconMenuItem5_Click;
+            // 
+            // iconMenuItem7
+            // 
+            iconMenuItem7.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconMenuItem7.IconColor = Color.Black;
+            iconMenuItem7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconMenuItem7.Name = "iconMenuItem7";
+            iconMenuItem7.Size = new Size(213, 34);
+            iconMenuItem7.Text = "Proveedores";
+            iconMenuItem7.Click += iconMenuItem7_Click;
             // 
             // iconMenuItem6
             // 
@@ -139,15 +151,15 @@
             ItemMenuSalirDelSistema.Text = "Salir del sistema";
             ItemMenuSalirDelSistema.Click += ItemMenuSalirDelSistema_Click;
             // 
-            // iconMenuItem7
+            // iconMenuItem8
             // 
-            iconMenuItem7.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconMenuItem7.IconColor = Color.Black;
-            iconMenuItem7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconMenuItem7.Name = "iconMenuItem7";
-            iconMenuItem7.Size = new Size(270, 34);
-            iconMenuItem7.Text = "Proveedores";
-            iconMenuItem7.Click += iconMenuItem7_Click;
+            iconMenuItem8.IconChar = FontAwesome.Sharp.IconChar.MoneyBills;
+            iconMenuItem8.IconColor = Color.Black;
+            iconMenuItem8.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconMenuItem8.Name = "iconMenuItem8";
+            iconMenuItem8.Size = new Size(270, 34);
+            iconMenuItem8.Text = "Ventas";
+            iconMenuItem8.Click += iconMenuItem8_Click;
             // 
             // MenuPrincipalView
             // 
@@ -180,5 +192,6 @@
         private FontAwesome.Sharp.IconMenuItem iconMenuItem6;
         private ToolStripMenuItem localidadesToolStripMenuItem;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem7;
+        private FontAwesome.Sharp.IconMenuItem iconMenuItem8;
     }
 }
