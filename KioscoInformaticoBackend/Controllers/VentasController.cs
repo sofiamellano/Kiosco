@@ -78,6 +78,15 @@ namespace KioscoInformaticoBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<Venta>> PostVenta(Venta venta)
         {
+            // Adjuntar Localidad y Cliente para evitar su inserción
+            _context.Attach(venta.Cliente.Localidad);
+            _context.Attach(venta.Cliente);
+
+            // Adjuntar los productos en los detalles para evitar su inserción
+            foreach (var detalle in venta.DetallesVenta)
+            {
+                _context.Attach(detalle.Producto);
+            }
             _context.Ventas.Add(venta);
             await _context.SaveChangesAsync();
 

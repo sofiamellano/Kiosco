@@ -9,10 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Reports\FacturaVentaReport.rdlc" />
     <None Remove="Reports\LocalidadesReport.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Reports\FacturaVentaReport.rdlc" />
     <EmbeddedResource Include="Reports\LocalidadesReport.rdlc" />
   </ItemGroup>
 

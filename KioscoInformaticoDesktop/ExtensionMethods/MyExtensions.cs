@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -105,6 +106,25 @@ namespace KioscoInformaticoDesktop.ExtensionMethods
         public static bool EstaVisible(this Form form)
         {
             return Application.OpenForms.OfType<Form>().Where(f => f.Name == form.Name).SingleOrDefault<Form>() != null;
+        }
+
+        public static void CopyPropertiesTo<T>(this T source, T destination)
+        {
+            if (source == null || destination == null)
+            {
+                throw new ArgumentNullException("Objeto de origen o destino son nulos");
+            }
+
+            Type type = typeof(T);
+
+            foreach (PropertyInfo property in type.GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            {
+                if (property.CanRead && property.CanWrite)
+                {
+                    object value = property.GetValue(source, null);
+                    property.SetValue(destination, value, null);
+                }
+            }
         }
 
 

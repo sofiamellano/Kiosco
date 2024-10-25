@@ -297,12 +297,15 @@ public partial class KioscoContext : DbContext
         modelBuilder.Entity<Producto>().HasQueryFilter(m => !m.Eliminado);
         modelBuilder.Entity<Proveedor>().HasQueryFilter(m => !m.Eliminado);
         modelBuilder.Entity<Venta>().HasQueryFilter(m => !m.Eliminado);
-       
+
         #endregion
 
         
+
+
+
     }
 
-    
+
 
 }

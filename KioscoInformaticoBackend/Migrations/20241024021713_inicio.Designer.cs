@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KioscoInformaticoBackend.Migrations
 {
     [DbContext(typeof(KioscoContext))]
-    [Migration("20241008192151_inicio")]
+    [Migration("20241024021713_inicio")]
     partial class inicio
     {
         /// <inheritdoc />
@@ -44,6 +44,7 @@ namespace KioscoInformaticoBackend.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<int?>("LocalidadId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
@@ -590,7 +591,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Id = 1,
                             ClienteId = 1,
                             Eliminado = false,
-                            Fecha = new DateTime(2024, 10, 8, 16, 21, 50, 949, DateTimeKind.Local).AddTicks(2151),
+                            Fecha = new DateTime(2024, 10, 23, 23, 17, 12, 585, DateTimeKind.Local).AddTicks(3346),
                             FormaPago = 0,
                             Iva = 21m,
                             Total = 3000m
@@ -600,7 +601,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Id = 2,
                             ClienteId = 2,
                             Eliminado = false,
-                            Fecha = new DateTime(2024, 10, 8, 16, 21, 50, 949, DateTimeKind.Local).AddTicks(2166),
+                            Fecha = new DateTime(2024, 10, 23, 23, 17, 12, 585, DateTimeKind.Local).AddTicks(3364),
                             FormaPago = 1,
                             Iva = 10m,
                             Total = 5000m
@@ -610,7 +611,7 @@ namespace KioscoInformaticoBackend.Migrations
                             Id = 3,
                             ClienteId = 1,
                             Eliminado = false,
-                            Fecha = new DateTime(2024, 10, 8, 16, 21, 50, 949, DateTimeKind.Local).AddTicks(2168),
+                            Fecha = new DateTime(2024, 10, 23, 23, 17, 12, 585, DateTimeKind.Local).AddTicks(3365),
                             FormaPago = 2,
                             Iva = 21m,
                             Total = 8000m
@@ -621,7 +622,9 @@ namespace KioscoInformaticoBackend.Migrations
                 {
                     b.HasOne("KioscoInformaticoServices.Models.Localidad", "Localidad")
                         .WithMany()
-                        .HasForeignKey("LocalidadId");
+                        .HasForeignKey("LocalidadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Localidad");
                 });
@@ -655,7 +658,7 @@ namespace KioscoInformaticoBackend.Migrations
                         .IsRequired();
 
                     b.HasOne("KioscoInformaticoServices.Models.Venta", "Venta")
-                        .WithMany()
+                        .WithMany("DetallesVenta")
                         .HasForeignKey("VentaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -683,6 +686,11 @@ namespace KioscoInformaticoBackend.Migrations
                         .IsRequired();
 
                     b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("KioscoInformaticoServices.Models.Venta", b =>
+                {
+                    b.Navigation("DetallesVenta");
                 });
 #pragma warning restore 612, 618
         }

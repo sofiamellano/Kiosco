@@ -64,7 +64,7 @@ namespace KioscoInformaticoBackend.Migrations
                     Telefonos = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FechaNacimiento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    LocalidadId = table.Column<int>(type: "int", nullable: true),
+                    LocalidadId = table.Column<int>(type: "int", nullable: false),
                     Eliminado = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
@@ -74,7 +74,8 @@ namespace KioscoInformaticoBackend.Migrations
                         name: "FK_Clientes_Localidades_LocalidadId",
                         column: x => x.LocalidadId,
                         principalTable: "Localidades",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -188,8 +189,8 @@ namespace KioscoInformaticoBackend.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     VentaId = table.Column<int>(type: "int", nullable: false),
                     ProductoId = table.Column<int>(type: "int", nullable: false),
-                    Cantidad = table.Column<int>(type: "int", nullable: false),
                     PrecioUnitario = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Cantidad = table.Column<int>(type: "int", nullable: false),
                     Eliminado = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
@@ -285,9 +286,9 @@ namespace KioscoInformaticoBackend.Migrations
                 columns: new[] { "Id", "ClienteId", "Eliminado", "Fecha", "FormaPago", "Iva", "Total" },
                 values: new object[,]
                 {
-                    { 1, 1, false, new DateTime(2024, 10, 8, 16, 21, 50, 949, DateTimeKind.Local).AddTicks(2151), 0, 21m, 3000m },
-                    { 2, 2, false, new DateTime(2024, 10, 8, 16, 21, 50, 949, DateTimeKind.Local).AddTicks(2166), 1, 10m, 5000m },
-                    { 3, 1, false, new DateTime(2024, 10, 8, 16, 21, 50, 949, DateTimeKind.Local).AddTicks(2168), 2, 21m, 8000m }
+                    { 1, 1, false, new DateTime(2024, 10, 23, 23, 17, 12, 585, DateTimeKind.Local).AddTicks(3346), 0, 21m, 3000m },
+                    { 2, 2, false, new DateTime(2024, 10, 23, 23, 17, 12, 585, DateTimeKind.Local).AddTicks(3364), 1, 10m, 5000m },
+                    { 3, 1, false, new DateTime(2024, 10, 23, 23, 17, 12, 585, DateTimeKind.Local).AddTicks(3365), 2, 21m, 8000m }
                 });
 
             migrationBuilder.InsertData(
