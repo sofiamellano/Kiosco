@@ -30,6 +30,7 @@
         {
             menuStrip1 = new MenuStrip();
             iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
+            iconMenuVentas = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem3 = new FontAwesome.Sharp.IconMenuItem();
             ItemMenuLocalidades = new FontAwesome.Sharp.IconMenuItem();
             iconMenuItem4 = new FontAwesome.Sharp.IconMenuItem();
@@ -39,8 +40,10 @@
             localidadesToolStripMenuItem = new ToolStripMenuItem();
             iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             ItemMenuSalirDelSistema = new FontAwesome.Sharp.IconMenuItem();
-            iconMenuItem8 = new FontAwesome.Sharp.IconMenuItem();
+            toolStrip1 = new ToolStrip();
+            iconToolHistoricoVentas = new FontAwesome.Sharp.IconToolStripButton();
             menuStrip1.SuspendLayout();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -55,7 +58,7 @@
             // 
             // iconMenuItem1
             // 
-            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { iconMenuItem8 });
+            iconMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { iconMenuVentas });
             iconMenuItem1.IconChar = FontAwesome.Sharp.IconChar.House;
             iconMenuItem1.IconColor = Color.Black;
             iconMenuItem1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -63,6 +66,16 @@
             iconMenuItem1.Name = "iconMenuItem1";
             iconMenuItem1.Size = new Size(118, 29);
             iconMenuItem1.Text = "Principal";
+            // 
+            // iconMenuVentas
+            // 
+            iconMenuVentas.IconChar = FontAwesome.Sharp.IconChar.MoneyBills;
+            iconMenuVentas.IconColor = Color.Black;
+            iconMenuVentas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconMenuVentas.Name = "iconMenuVentas";
+            iconMenuVentas.Size = new Size(270, 34);
+            iconMenuVentas.Text = "Ventas";
+            iconMenuVentas.Click += iconMenuItem8_Click;
             // 
             // iconMenuItem3
             // 
@@ -151,21 +164,36 @@
             ItemMenuSalirDelSistema.Text = "Salir del sistema";
             ItemMenuSalirDelSistema.Click += ItemMenuSalirDelSistema_Click;
             // 
-            // iconMenuItem8
+            // toolStrip1
             // 
-            iconMenuItem8.IconChar = FontAwesome.Sharp.IconChar.MoneyBills;
-            iconMenuItem8.IconColor = Color.Black;
-            iconMenuItem8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconMenuItem8.Name = "iconMenuItem8";
-            iconMenuItem8.Size = new Size(270, 34);
-            iconMenuItem8.Text = "Ventas";
-            iconMenuItem8.Click += iconMenuItem8_Click;
+            toolStrip1.ImageScalingSize = new Size(24, 24);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { iconToolHistoricoVentas });
+            toolStrip1.Location = new Point(0, 33);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(800, 72);
+            toolStrip1.TabIndex = 1;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // iconToolHistoricoVentas
+            // 
+            iconToolHistoricoVentas.Font = new Font("Segoe UI", 6F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            iconToolHistoricoVentas.IconChar = FontAwesome.Sharp.IconChar.Print;
+            iconToolHistoricoVentas.IconColor = Color.Black;
+            iconToolHistoricoVentas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconToolHistoricoVentas.ImageScaling = ToolStripItemImageScaling.None;
+            iconToolHistoricoVentas.ImageTransparentColor = Color.Magenta;
+            iconToolHistoricoVentas.Name = "iconToolHistoricoVentas";
+            iconToolHistoricoVentas.Size = new Size(96, 67);
+            iconToolHistoricoVentas.Text = "Histórico Ventas";
+            iconToolHistoricoVentas.TextImageRelation = TextImageRelation.ImageAboveText;
+            iconToolHistoricoVentas.Click += iconToolHistoricoVentas_Click;
             // 
             // MenuPrincipalView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Margin = new Padding(2);
@@ -175,6 +203,8 @@
             WindowState = FormWindowState.Maximized;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -192,6 +222,8 @@
         private FontAwesome.Sharp.IconMenuItem iconMenuItem6;
         private ToolStripMenuItem localidadesToolStripMenuItem;
         private FontAwesome.Sharp.IconMenuItem iconMenuItem7;
-        private FontAwesome.Sharp.IconMenuItem iconMenuItem8;
+        private FontAwesome.Sharp.IconMenuItem iconMenuVentas;
+        private ToolStrip toolStrip1;
+        private FontAwesome.Sharp.IconToolStripButton iconToolHistoricoVentas;
     }
 }

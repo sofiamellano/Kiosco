@@ -42,7 +42,7 @@ namespace KioscoInformaticoDesktop.ViewReports
             //construyo un Datatable con los datos de la venta
 
             
-             List<object> venta = new List<object> { new { Id = nuevaVenta.Id, Fecha = nuevaVenta.Fecha, ClienteNombre = nuevaVenta.Cliente.Nombre, Total = nuevaVenta.Total, Iva = nuevaVenta.Iva, FormaPago = nuevaVenta.FormaPago } };
+             List<object> venta = new List<object> { new { Id = nuevaVenta.Id, Fecha = nuevaVenta.Fecha, ClienteNombre = nuevaVenta.Cliente.Nombre, Total = nuevaVenta.Total, Iva = nuevaVenta.Iva, FormaPago = nuevaVenta.FormaPago.ToString() } };
 
 
 

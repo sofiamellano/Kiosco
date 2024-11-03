@@ -3,26 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:viewModels="clr-namespace:KioscoInformaticoApp.ViewModels"
              x:Class="KioscoInformaticoApp.Views.AddEditProductoView"
-             Title="AddEditProductoView">
+             Title="Agregar/Editar producto"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.BindingContext>
         <viewModels:AddEditProductoViewModel />
     </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <Label Text="Agregar o editar producto"
-               FontSize="Header"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
-        <Entry Placeholder="Nombre del producto"
-               Text="{Binding Nombre}"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
-        <Entry Placeholder="Precio del producto"
-               Text="{Binding Precio}"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
-        <CheckBox IsChecked="{Binding Oferta}"
-                  HorizontalOptions="Center"
-                  VerticalOptions="Center"/>
+        
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
+            <Label Text="Nombre del producto:"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"/>
+            <Entry Placeholder="Nombre del producto"
+                   Text="{Binding Nombre}"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"/>
+            <Label Text="Precio del producto: $"
+                   Grid.Column="0"
+                   Grid.Row="1"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"/>
+            <Entry Placeholder="Precio del producto"
+                   Text="{Binding Precio, StringFormat='{}{0:F2}'}"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Center"
+                   Keyboard="Numeric">
+                
+            </Entry>
+            <Label Text="Oferta:"
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"/>
+            <CheckBox IsChecked="{Binding Oferta}"
+                      Grid.Column="1"
+                        Grid.Row="2"
+                      HorizontalOptions="Start"
+                      VerticalOptions="Center"/>
+        </Grid>
         <Button Text="Guardar"
                 Command="{Binding SaveProductCommand}"
                 HorizontalOptions="Center"

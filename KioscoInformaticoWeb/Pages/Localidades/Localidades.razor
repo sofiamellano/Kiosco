@@ -1,5 +1,7 @@
 ﻿@page "/localidades"
+@using System.Diagnostics
 @inject IGenericService<Localidad> LocalidadService
+@inject ILogger<Localidades> logger
 @inject SweetAlertService  SweetAlert 
 
 
@@ -46,6 +48,8 @@ else
     protected override async Task OnInitializedAsync()
     {
         localidades = await LocalidadService.GetAllAsync();
+        logger.LogInformation($"Localidades obtenidas {localidades?.Count}");
+        
     }
     
     
@@ -62,6 +66,7 @@ else
             });
         if (respuesta.IsConfirmed)
         {
+            logger.LogInformation($"Borrando localidad {localidad.Nombre}");
             await LocalidadService.DeleteAsync(localidad.Id);
             localidades = await LocalidadService.GetAllAsync();
             StateHasChanged();

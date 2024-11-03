@@ -3,6 +3,7 @@ using KioscoInformaticoServices.Interfaces;
 using KioscoInformaticoServices.Models;
 using KioscoInformaticoServices.Services;
 using KioscoInformaticoWeb;
+using KioscoInformaticoWeb.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -14,7 +15,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<ILocalidadService, LocalidadService>();
-
+builder.Services.AddScoped<FirebaseAuthService>();
 builder.Services.AddSweetAlert2();
 
 await builder.Build().RunAsync();

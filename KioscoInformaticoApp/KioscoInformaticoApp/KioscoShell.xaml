@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="KioscoInformaticoApp.KioscoShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:KioscoInformaticoApp"
+    xmlns:views="clr-namespace:KioscoInformaticoApp.Views"
+    xmlns:viewsmodels="clr-namespace:KioscoInformaticoApp.ViewModels"
+    xmlns:contentviews="clr-namespace:KioscoInformaticoApp.ContentViews"
+    FlyoutBehavior="Disabled"
+    Title="KioscoInformaticoApp"
+    FlyoutBackgroundImage="photo.jpg"
+    FlyoutBackgroundImageAspect="AspectFill"
+    FlyoutHeaderBehavior="CollapseOnScroll">
+
+    <Shell.BindingContext>
+        <viewsmodels:KioscoShellViewModel />
+    </Shell.BindingContext>
+
+    <Shell.FlyoutHeader>
+        <contentviews:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <contentviews:FlyoutFooter />
+    </Shell.FlyoutFooter>
+
+    <FlyoutItem Route="nuestra_app" 
+            FlyoutDisplayOptions="AsMultipleItems" x:Name="FlyoutItemsPrincipal" >
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+        <ShellContent
+            Title="Ofertas"
+            ContentTemplate="{DataTemplate views:ProductosEnOfertaView}"
+            Route="Ofertas" /> 
+        <Tab Title="Productos"
+             Route="productos"
+             Icon="paw.png">
+            <ShellContent
+                Title="Lista"
+                Icon="cat.png"
+                ContentTemplate="{DataTemplate views:ProductosView}"
+                Route="ListaProductos" />
+            <ShellContent
+                Title="Agregar producto"
+                Icon="dog.png"
+                ContentTemplate="{DataTemplate views:AddEditProductoView}"
+                Route="AgregarEditarProducto" />
+        </Tab>
+    </FlyoutItem>
+    <MenuItem Text="Cerrar sesión"
+          Command="{Binding LogoutCommand}"
+          IconImageSource="random.png"/>
+    <ShellContent
+            Title="Login"
+            ContentTemplate="{DataTemplate views:IniciarSesionView}"
+            Route="Login" 
+            IsVisible="{Binding IsUserLogout}"
+        />
+
+
+</Shell>

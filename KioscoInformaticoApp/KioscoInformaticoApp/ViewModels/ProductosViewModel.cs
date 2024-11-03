@@ -47,24 +47,58 @@ namespace KioscoInformaticoApp.ViewModels
             }
 		}
         private List<Producto>? productosListToFilter;
+        private Producto? selectedProduct;
 
-        
+        public Producto? SelectedProduct
+        {
+            get { return selectedProduct; }
+            set { selectedProduct = value;
+                OnPropertyChanged();
+                EditarProductoCommand.ChangeCanExecute();
+            }
+        }
+
+
+
         public Command ObtenerProductosCommand { get; }
         public Command FiltrarProductosCommand { get; }
         public Command AgregarProductoCommand { get; }
+        public Command EditarProductoCommand { get; }
 
         public ProductosViewModel()
         {
             ObtenerProductosCommand = new Command(async () => await ObtenerProductos());
             FiltrarProductosCommand = new Command(async () => await FiltrarProductos());
             AgregarProductoCommand = new Command(async () => await AgregarProducto());
+            EditarProductoCommand = new Command(async (obj) => await EditarProducto(),PermitirEditar);
             ObtenerProductos();
 
         }
 
+        private bool PermitirEditar(object arg)
+        {
+            return SelectedProduct!=null;
+        }
+
+        private async Task EditarProducto()
+        {
+            var navigationParameter = new ShellNavigationQueryParameters
+            {
+                { "ProductToEdit", SelectedProduct }
+            };
+            await Shell.Current.GoToAsync("//AgregarEditarProducto", navigationParameter);
+            //WeakReferenceMessenger.Default.Send(new Message("EditarProducto") { ProductoAEditar=SelectedProduct });
+        }
+
         private async Task AgregarProducto()
         {
-            WeakReferenceMessenger.Default.Send(new Message("AgregarProducto"));
+            var navigationParameter = new ShellNavigationQueryParameters
+            {
+                { "ProductToEdit", null }
+            };
+            await Shell.Current.GoToAsync("//AgregarEditarProducto", navigationParameter);
+
+            //WeakReferenceMessenger.Default.Send(new Message("AgregarProducto"));
         }
 
         public async Task FiltrarProductos()

@@ -11,7 +11,7 @@ namespace KioscoInformaticoApp
             InitializeComponent();
 
             //MainPage = new AppShell();
-            MainPage = new NavigationPage(new IniciarSesionView());
+            MainPage = new KioscoShell();
            
         }
 

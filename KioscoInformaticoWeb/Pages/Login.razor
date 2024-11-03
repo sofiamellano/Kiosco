@@ -1,0 +1,82 @@
+﻿@page "/login"
+@inject NavigationManager NavigationManager
+@inject FirebaseAuthService AuthService
+
+@if (!isAuthenticated)
+{
+    <div class="card text-center">
+        <div class="card-header">
+            Iniciar sesión
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Bienvenido a KioscoInformático</h3>
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-md-12 d-flex justify-content-center align-items-center">
+                        <label class="form-label me-2">Email</label>
+                        <InputText class="form-control w-50" @bind-Value="email" placeholder="Email" />
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-12 d-flex justify-content-center align-items-center">
+                        <label class="form-label me-2">Password</label>
+                        <InputText class="form-control w-50" @bind-Value="password" placeholder="Password" type="password" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <button class="btn btn-primary" @onclick="Loguear">Acceder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+            Desarrollo Base de datos I - TSDS - 2024
+        </div>
+    </div>
+}
+else
+{
+    <div class="card text-center">
+        <div class="card-header">
+            Cerrar sesión
+        </div>
+        <div class="card-body">
+            <p class="card-header">Cerrar sesión de KioscoInformático</p>
+
+            <button class="btn btn-primary" @onclick="Desloguear">Cerrar sesión</button>
+        </div>
+        <div class="card-footer text-body-secondary">
+            Desarrollo Base de datos I - TSDS - 2024
+        </div>
+    </div>
+}
+
+@code {
+    private bool isAuthenticated = false;
+    private string email;
+    private string password;
+
+    private async Task Loguear()
+    {
+        var userId = await AuthService.SignInWithEmailPassword(email, password);
+        isAuthenticated = await AuthService.IsUserAuthenticated();
+        StateHasChanged();
+        //NavigationManager.NavigateTo($"/");
+    }
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        isAuthenticated = await AuthService.IsUserAuthenticated();
+    }
+
+    private async Task Desloguear()
+    {
+        AuthService.SignOut();
+        isAuthenticated =false;
+        StateHasChanged();
+        //NavigationManager.NavigateTo($"/");
+    }
+}

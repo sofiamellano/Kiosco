@@ -16,7 +16,8 @@ public partial class ProductosView : ContentPage
         //if (viewmodel.NotaSeleccionada != null)
         //{
         viewmodel.ObtenerProductos();
-        
+        viewmodel.SelectedProduct = null;
+
         //}
     }
 }

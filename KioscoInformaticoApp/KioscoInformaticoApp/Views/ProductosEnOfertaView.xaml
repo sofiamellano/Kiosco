@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:KioscoInformaticoApp.ViewModels"
+             x:Class="KioscoInformaticoApp.Views.ProductosEnOfertaView"
+             Title="Productos en oferta"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.BindingContext>
+        <viewModels:ProductosEnOfertaViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout>
+        <Frame 
+        Padding="5"
+        BorderColor="White"
+        CornerRadius="20"
+        BackgroundColor="Beige">
+            <Label 
+            Text="LISTA DE PRODUCTOS EN OFERTA"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Large" 
+            TextColor="Black"
+            FontFamily="Comic Sans MS"
+            FontAttributes="Bold"
+            />
+        </Frame>
+        
+        <Entry Placeholder="Buscar producto en oferta..."
+           Text="{Binding FilterProducts}"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           Margin="0,20,0,0"
+           />
+
+        <ActivityIndicator IsRunning="{Binding ActivityStart}"/>
+        <ScrollView HeightRequest="300" HorizontalOptions="Center">
+            <ListView 
+              ItemsSource="{Binding Productos}"
+              SelectionMode="Single"
+              IsPullToRefreshEnabled="True"
+              RefreshCommand="{Binding ObtenerProductosCommand}"
+             >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                 Padding="10"
+                                 BackgroundColor="Beige"
+                                 Margin="5,5,5,0">
+                                <Label Text="{Binding Nombre}"
+                               FontSize="Medium"
+                               TextColor="Black"
+                               VerticalOptions="Center"/>
+                                <Label Text="{Binding Precio, StringFormat='{0:N2}'}"
+                               FontSize="Small"
+                               TextColor="Black"
+                               VerticalOptions="Center"
+                               HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>
