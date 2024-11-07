@@ -2,6 +2,7 @@
 @inject NavigationManager NavigationManager
 @inject FirebaseAuthService AuthService
 
+
 @if (!isAuthenticated)
 {
     <div class="card text-center">
@@ -26,6 +27,9 @@
                 <div class="row">
                     <div class="col-md-12 d-flex justify-content-center">
                         <button class="btn btn-primary" @onclick="Loguear">Acceder</button>
+                    </div>
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <button class="btn btn-secondary" @onclick="RegisterMe">Registrarme</button>
                     </div>
                 </div>
             </div>
@@ -78,5 +82,9 @@ else
         isAuthenticated =false;
         StateHasChanged();
         //NavigationManager.NavigateTo($"/");
+    }
+    private void RegisterMe()
+    {
+        NavigationManager.NavigateTo($"/signin");
     }
 }

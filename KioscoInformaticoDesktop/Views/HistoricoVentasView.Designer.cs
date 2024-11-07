@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label1 = new Label();
             dataGridVentas = new DataGridView();
@@ -41,6 +41,7 @@
             checkFiltrado = new CheckBox();
             label8 = new Label();
             numericTotalFacturado = new NumericUpDown();
+            btnImprimir = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridVentas).BeginInit();
             panelFiltrado.SuspendLayout();
@@ -75,15 +76,15 @@
             dataGridVentas.AllowUserToDeleteRows = false;
             dataGridVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridVentas.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridVentas.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridVentas.Location = new Point(27, 205);
             dataGridVentas.Name = "dataGridVentas";
             dataGridVentas.ReadOnly = true;
@@ -163,7 +164,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(524, 492);
+            label8.Location = new Point(330, 483);
             label8.Name = "label8";
             label8.Size = new Size(134, 25);
             label8.TabIndex = 17;
@@ -173,18 +174,29 @@
             // 
             numericTotalFacturado.DecimalPlaces = 2;
             numericTotalFacturado.Enabled = false;
-            numericTotalFacturado.Location = new Point(664, 490);
+            numericTotalFacturado.Location = new Point(470, 481);
             numericTotalFacturado.Maximum = new decimal(new int[] { 1410065407, 2, 0, 0 });
             numericTotalFacturado.Name = "numericTotalFacturado";
             numericTotalFacturado.Size = new Size(160, 31);
             numericTotalFacturado.TabIndex = 16;
             numericTotalFacturado.TextAlign = HorizontalAlignment.Right;
             // 
+            // btnImprimir
+            // 
+            btnImprimir.Location = new Point(702, 478);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.Size = new Size(112, 34);
+            btnImprimir.TabIndex = 18;
+            btnImprimir.Text = "Imprimir";
+            btnImprimir.UseVisualStyleBackColor = true;
+            btnImprimir.Click += btnImprimir_Click;
+            // 
             // HistoricoVentasView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(894, 553);
+            Controls.Add(btnImprimir);
             Controls.Add(label8);
             Controls.Add(numericTotalFacturado);
             Controls.Add(checkFiltrado);
@@ -218,5 +230,6 @@
         private Button BtnFiltrar;
         private Label label8;
         private NumericUpDown numericTotalFacturado;
+        private Button btnImprimir;
     }
 }

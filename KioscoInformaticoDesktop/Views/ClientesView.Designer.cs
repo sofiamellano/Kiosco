@@ -69,19 +69,17 @@
             panel1.BackColor = Color.DeepSkyBlue;
             panel1.Controls.Add(label1);
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1291, 87);
+            panel1.Size = new Size(904, 52);
             panel1.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Showcard Gothic", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(14, 15);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(10, 9);
             label1.Name = "label1";
-            label1.Size = new Size(197, 50);
+            label1.Size = new Size(134, 33);
             label1.TabIndex = 0;
             label1.Text = "Clientes";
             // 
@@ -90,11 +88,10 @@
             tabControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl.Controls.Add(tabPageLista);
             tabControl.Controls.Add(tabPageAgregarEditar);
-            tabControl.Location = new Point(0, 97);
-            tabControl.Margin = new Padding(4, 5, 4, 5);
+            tabControl.Location = new Point(0, 58);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(1291, 755);
+            tabControl.Size = new Size(867, 453);
             tabControl.TabIndex = 0;
             // 
             // tabPageLista
@@ -106,11 +103,10 @@
             tabPageLista.Controls.Add(txtFiltro);
             tabPageLista.Controls.Add(label3);
             tabPageLista.Controls.Add(dataGridClientesView);
-            tabPageLista.Location = new Point(4, 34);
-            tabPageLista.Margin = new Padding(4, 5, 4, 5);
+            tabPageLista.Location = new Point(4, 24);
             tabPageLista.Name = "tabPageLista";
-            tabPageLista.Padding = new Padding(4, 5, 4, 5);
-            tabPageLista.Size = new Size(1283, 717);
+            tabPageLista.Padding = new Padding(3, 3, 3, 3);
+            tabPageLista.Size = new Size(859, 425);
             tabPageLista.TabIndex = 0;
             tabPageLista.Text = "Lista";
             tabPageLista.UseVisualStyleBackColor = true;
@@ -125,10 +121,9 @@
             iconButtonEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonEliminar.IconSize = 44;
             iconButtonEliminar.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonEliminar.Location = new Point(1097, 387);
-            iconButtonEliminar.Margin = new Padding(4, 5, 4, 5);
+            iconButtonEliminar.Location = new Point(731, 232);
             iconButtonEliminar.Name = "iconButtonEliminar";
-            iconButtonEliminar.Size = new Size(154, 90);
+            iconButtonEliminar.Size = new Size(108, 54);
             iconButtonEliminar.TabIndex = 10;
             iconButtonEliminar.Text = "Eli&minar";
             iconButtonEliminar.TextAlign = ContentAlignment.MiddleRight;
@@ -145,10 +140,9 @@
             iconButtonEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonEditar.IconSize = 45;
             iconButtonEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonEditar.Location = new Point(1097, 265);
-            iconButtonEditar.Margin = new Padding(4, 5, 4, 5);
+            iconButtonEditar.Location = new Point(731, 159);
             iconButtonEditar.Name = "iconButtonEditar";
-            iconButtonEditar.Size = new Size(154, 90);
+            iconButtonEditar.Size = new Size(108, 54);
             iconButtonEditar.TabIndex = 9;
             iconButtonEditar.Text = "&Editar";
             iconButtonEditar.TextAlign = ContentAlignment.MiddleRight;
@@ -164,10 +158,9 @@
             iconButtonAgregar.IconColor = Color.White;
             iconButtonAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButtonAgregar.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonAgregar.Location = new Point(1097, 137);
-            iconButtonAgregar.Margin = new Padding(4, 5, 4, 5);
+            iconButtonAgregar.Location = new Point(731, 82);
             iconButtonAgregar.Name = "iconButtonAgregar";
-            iconButtonAgregar.Size = new Size(154, 90);
+            iconButtonAgregar.Size = new Size(108, 54);
             iconButtonAgregar.TabIndex = 8;
             iconButtonAgregar.Text = "&Agregar";
             iconButtonAgregar.TextAlign = ContentAlignment.MiddleRight;
@@ -183,10 +176,9 @@
             btnBuscar.IconColor = Color.White;
             btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBuscar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBuscar.Location = new Point(1097, 15);
-            btnBuscar.Margin = new Padding(4, 5, 4, 5);
+            btnBuscar.Location = new Point(731, 9);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(154, 90);
+            btnBuscar.Size = new Size(108, 54);
             btnBuscar.TabIndex = 7;
             btnBuscar.Text = "&Buscar";
             btnBuscar.TextAlign = ContentAlignment.MiddleRight;
@@ -195,19 +187,17 @@
             // 
             // txtFiltro
             // 
-            txtFiltro.Location = new Point(177, 38);
-            txtFiltro.Margin = new Padding(4, 5, 4, 5);
+            txtFiltro.Location = new Point(124, 23);
             txtFiltro.Name = "txtFiltro";
-            txtFiltro.Size = new Size(877, 31);
+            txtFiltro.Size = new Size(615, 23);
             txtFiltro.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(40, 48);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(28, 29);
             label3.Name = "label3";
-            label3.Size = new Size(137, 25);
+            label3.Size = new Size(91, 15);
             label3.TabIndex = 4;
             label3.Text = "Busar Producto:";
             // 
@@ -227,13 +217,12 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGridClientesView.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridClientesView.Location = new Point(4, 122);
-            dataGridClientesView.Margin = new Padding(4, 5, 4, 5);
+            dataGridClientesView.Location = new Point(3, 73);
             dataGridClientesView.Name = "dataGridClientesView";
             dataGridClientesView.ReadOnly = true;
             dataGridClientesView.RowHeadersWidth = 62;
             dataGridClientesView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridClientesView.Size = new Size(1051, 577);
+            dataGridClientesView.Size = new Size(736, 346);
             dataGridClientesView.TabIndex = 0;
             // 
             // tabPageAgregarEditar
@@ -250,11 +239,10 @@
             tabPageAgregarEditar.Controls.Add(btnGuardar);
             tabPageAgregarEditar.Controls.Add(txtNombre);
             tabPageAgregarEditar.Controls.Add(label2);
-            tabPageAgregarEditar.Location = new Point(4, 34);
-            tabPageAgregarEditar.Margin = new Padding(4, 5, 4, 5);
+            tabPageAgregarEditar.Location = new Point(4, 24);
             tabPageAgregarEditar.Name = "tabPageAgregarEditar";
-            tabPageAgregarEditar.Padding = new Padding(4, 5, 4, 5);
-            tabPageAgregarEditar.Size = new Size(1283, 717);
+            tabPageAgregarEditar.Padding = new Padding(3, 3, 3, 3);
+            tabPageAgregarEditar.Size = new Size(896, 425);
             tabPageAgregarEditar.TabIndex = 1;
             tabPageAgregarEditar.Text = "Agregar/Editar";
             tabPageAgregarEditar.UseVisualStyleBackColor = true;
@@ -262,18 +250,18 @@
             // dateTimeFechaNacimiento
             // 
             dateTimeFechaNacimiento.Format = DateTimePickerFormat.Short;
-            dateTimeFechaNacimiento.Location = new Point(551, 329);
+            dateTimeFechaNacimiento.Location = new Point(386, 197);
+            dateTimeFechaNacimiento.Margin = new Padding(2, 2, 2, 2);
             dateTimeFechaNacimiento.Name = "dateTimeFechaNacimiento";
-            dateTimeFechaNacimiento.Size = new Size(155, 31);
+            dateTimeFechaNacimiento.Size = new Size(110, 23);
             dateTimeFechaNacimiento.TabIndex = 4;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(334, 327);
-            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Location = new Point(234, 196);
             label7.Name = "label7";
-            label7.Size = new Size(153, 25);
+            label7.Size = new Size(104, 15);
             label7.TabIndex = 17;
             label7.Text = "Fecha nacimiento:";
             // 
@@ -281,54 +269,50 @@
             // 
             comboLocalidades.DropDownStyle = ComboBoxStyle.DropDownList;
             comboLocalidades.FormattingEnabled = true;
-            comboLocalidades.Location = new Point(552, 247);
+            comboLocalidades.Location = new Point(386, 148);
+            comboLocalidades.Margin = new Padding(2, 2, 2, 2);
             comboLocalidades.Name = "comboLocalidades";
-            comboLocalidades.Size = new Size(279, 33);
+            comboLocalidades.Size = new Size(196, 23);
             comboLocalidades.TabIndex = 3;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(394, 250);
-            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Location = new Point(276, 150);
             label6.Name = "label6";
-            label6.Size = new Size(91, 25);
+            label6.Size = new Size(61, 15);
             label6.TabIndex = 16;
             label6.Text = "Localidad:";
             // 
             // txtTelefonos
             // 
-            txtTelefonos.Location = new Point(551, 176);
-            txtTelefonos.Margin = new Padding(4, 5, 4, 5);
+            txtTelefonos.Location = new Point(386, 106);
             txtTelefonos.Name = "txtTelefonos";
-            txtTelefonos.Size = new Size(280, 31);
+            txtTelefonos.Size = new Size(197, 23);
             txtTelefonos.TabIndex = 2;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(396, 181);
-            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Location = new Point(277, 109);
             label5.Name = "label5";
-            label5.Size = new Size(91, 25);
+            label5.Size = new Size(60, 15);
             label5.TabIndex = 14;
             label5.Text = "Telefonos:";
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(551, 110);
-            txtDireccion.Margin = new Padding(4, 5, 4, 5);
+            txtDireccion.Location = new Point(386, 66);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(280, 31);
+            txtDireccion.Size = new Size(197, 23);
             txtDireccion.TabIndex = 1;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(396, 115);
-            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Location = new Point(277, 69);
             label4.Name = "label4";
-            label4.Size = new Size(89, 25);
+            label4.Size = new Size(60, 15);
             label4.TabIndex = 12;
             label4.Text = "Direccion:";
             // 
@@ -338,10 +322,9 @@
             btnCancelar.IconColor = Color.Black;
             btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelar.Location = new Point(734, 458);
-            btnCancelar.Margin = new Padding(4, 5, 4, 5);
+            btnCancelar.Location = new Point(514, 275);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(143, 100);
+            btnCancelar.Size = new Size(100, 60);
             btnCancelar.TabIndex = 6;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.TextAlign = ContentAlignment.MiddleRight;
@@ -354,10 +337,9 @@
             btnGuardar.IconColor = Color.Black;
             btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardar.Location = new Point(396, 458);
-            btnGuardar.Margin = new Padding(4, 5, 4, 5);
+            btnGuardar.Location = new Point(277, 275);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(143, 100);
+            btnGuardar.Size = new Size(100, 60);
             btnGuardar.TabIndex = 5;
             btnGuardar.Text = "&Guardar";
             btnGuardar.TextAlign = ContentAlignment.MiddleRight;
@@ -366,19 +348,17 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(551, 53);
-            txtNombre.Margin = new Padding(4, 5, 4, 5);
+            txtNombre.Location = new Point(386, 32);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(280, 31);
+            txtNombre.Size = new Size(197, 23);
             txtNombre.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(396, 58);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(277, 35);
             label2.Name = "label2";
-            label2.Size = new Size(82, 25);
+            label2.Size = new Size(54, 15);
             label2.TabIndex = 8;
             label2.Text = "Nombre:";
             // 
@@ -388,15 +368,16 @@
             // 
             // ClientesView
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1287, 853);
+            ClientSize = new Size(901, 449);
             Controls.Add(tabControl);
             Controls.Add(panel1);
-            Margin = new Padding(4, 5, 4, 5);
             Name = "ClientesView";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ClientesView";
+            
+            
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabControl.ResumeLayout(false);

@@ -1,15 +1,8 @@
 ﻿using KioscoInformaticoDesktop.ExtensionMethods;
+using KioscoInformaticoDesktop.ViewReports;
 using KioscoInformaticoServices.Models;
 using KioscoInformaticoServices.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace KioscoInformaticoDesktop.Views
 {
@@ -21,7 +14,7 @@ namespace KioscoInformaticoDesktop.Views
         {
             InitializeComponent();
             LoadData();
-            
+
         }
 
         private async void LoadData()
@@ -45,7 +38,7 @@ namespace KioscoInformaticoDesktop.Views
         }
 
         private void DisplayDataGrid()
-        { 
+        {
             dataGridVentas.DataSource = ventas;
             dataGridVentas.OcultarColumnas(new string[] { "Id", "Eliminado", "ClienteId", "DetallesVenta" });
             dataGridVentas.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -59,7 +52,7 @@ namespace KioscoInformaticoDesktop.Views
             if (checkFiltrado.Checked)
             {
                 dateTimeDesde.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                dateTimeHasta.Value = DateTime.Now;
+                dateTimeHasta.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
                 DisplayDataGridFilter();
                 CalculeTotal();
             }
@@ -86,6 +79,20 @@ namespace KioscoInformaticoDesktop.Views
         {
             DisplayDataGridFilter();
             CalculeTotal();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            var TituloReporte = "Listado de Ventas";
+            var ventasAImprimir = ventas;
+            if (checkFiltrado.Checked)
+            {
+                ventasAImprimir = ventas.Where(venta => venta.Fecha >= dateTimeDesde.Value &&
+                                                            venta.Fecha <= dateTimeHasta.Value).ToList();
+                TituloReporte = $"Listado de Ventas desde {dateTimeDesde.Value.ToShortDateString()} hasta {dateTimeHasta.Value.ToShortDateString()}";
+            }
+            var HistoricoVentasViewReport = new HistoricoVentasViewReport(ventasAImprimir, TituloReporte);
+            HistoricoVentasViewReport.ShowDialog();
         }
     }
 }

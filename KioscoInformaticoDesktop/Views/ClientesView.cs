@@ -130,5 +130,7 @@ namespace KioscoInformaticoDesktop.Views
             var clientesFiltrados = await clienteService.GetAllAsync(txtFiltro.Text);
             ListClientes.DataSource = clientesFiltrados;
         }
+
+
     }
 }
