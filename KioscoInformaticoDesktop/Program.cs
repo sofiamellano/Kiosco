@@ -1,3 +1,5 @@
+using KioscoInformaticoDesktop.Views;
+
 namespace KioscoInformaticoDesktop
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace KioscoInformaticoDesktop
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MenuPrincipalView());
+            Application.Run(new SplashView());
         }
     }
 }

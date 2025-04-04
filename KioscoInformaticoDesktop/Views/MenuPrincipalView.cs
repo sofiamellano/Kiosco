@@ -12,7 +12,7 @@ namespace KioscoInformaticoDesktop
 
         private void ItemMenuSalirDelSistema_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void ItemMenuLocalidades_Click(object sender, EventArgs e)

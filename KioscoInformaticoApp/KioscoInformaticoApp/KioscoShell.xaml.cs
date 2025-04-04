@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using KioscoInformaticoApp.Class;
 using KioscoInformaticoApp.ViewModels;
+using KioscoInformaticoApp.Views;
 //using static Java.Util.Jar.Attributes;
 
 namespace KioscoInformaticoApp
@@ -12,9 +13,15 @@ namespace KioscoInformaticoApp
         {
             InitializeComponent();
             FlyoutItemsPrincipal.IsVisible= false; // Oculta el menú lateral
-            //Shell.Current.GoToAsync("//Login"); // Navega a la página de login
-
+            RegisterRoutes();
         }
+
+        private void RegisterRoutes()
+        {
+            Routing.RegisterRoute("Registrarse", typeof(RegistrarseView));
+        }
+
+
         public void EnableAppAfterLogin()
         {
             FlyoutBehavior = FlyoutBehavior.Flyout; // Habilita el FlyOut

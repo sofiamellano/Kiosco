@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KioscoInformaticoServices.Properties {
+namespace KioscoInformaticoDesktop.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KioscoInformaticoServices.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KioscoInformaticoServices.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KioscoInformaticoDesktop.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,12 @@ namespace KioscoInformaticoServices.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a false.
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static string Remoto {
+        internal static System.Drawing.Bitmap fondoKiosco {
             get {
-                return ResourceManager.GetString("Remoto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a https://datakioscoale.azurewebsites.net/api/.
-        /// </summary>
-        internal static string UrlApi {
-            get {
-                return ResourceManager.GetString("UrlApi", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a https://localhost:7238/api/.
-        /// </summary>
-        internal static string UrlApiLocal {
-            get {
-                return ResourceManager.GetString("UrlApiLocal", resourceCulture);
+                object obj = ResourceManager.GetObject("fondoKiosco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

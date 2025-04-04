@@ -21,7 +21,7 @@
                        VerticalTextAlignment="Center"
                        Margin="40,20">Email:</Label>
                 <Entry Grid.Row="0" Grid.Column="1" 
-                       Text="{Binding Email}"
+                       Text="{Binding Mail}"
                        Margin="0,10,0,10"></Entry>
 
                 <Label Grid.Row="1" Grid.Column="0" 

@@ -1,0 +1,78 @@
+﻿@page "/signup"
+@inject NavigationManager NavigationManager
+@inject FirebaseAuthService AuthService
+@inject SweetAlertService SweetAlert
+
+<div class="card text-center">
+    <div class="card-header">
+        Registro
+    </div>
+    <div class="card-body">
+        <form class="form-horizontal">
+            <div class="form-group row mb-2">
+                <label class="col-sm-2 col-form-label" for="Nombre">Nombre:</label>
+                <div class="col-sm-10">
+                    <InputText id="Nombre" class="form-control" @bind-Value="name" />
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-2 col-form-label" for="email">Email:</label>
+                <div class="col-sm-10">
+                    <InputText type="text" id="email" class="form-control" @bind-Value="email" />
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-2 col-form-label" for="password">Password:</label>
+                <div class="col-sm-10">
+                    <InputText type="password" id="password" class="form-control" @bind-Value="password" />
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-sm-2 col-form-label" for="passwordverify">Verificar password:</label>
+                <div class="col-sm-10">
+                    <InputText type="password" id="passwordverify" class="form-control" @bind-Value="passwordverify" />
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="button" class="btn btn-primary mb-2" @onclick="Register">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer text-body-secondary">
+        Kiosco Informático
+    </div>
+</div>
+
+@code {
+    private string name;
+    private string email;
+    private string password;
+    private string passwordverify;
+
+    private async Task Register()
+    {
+        if (password != passwordverify)
+        {
+            await SweetAlert.FireAsync("Error", "Las contraseñas no coinciden", SweetAlertIcon.Error);
+            return;
+        }
+        
+        var userId = await AuthService.createUserWithEmailAndPassword(email, password, name);
+        if(userId!=null)
+        {
+            await SweetAlert.FireAsync("Registro exitoso", "Usuario registrado correctamente, bienvenido", SweetAlertIcon.Success);
+            NavigationManager.NavigateTo($"/");
+        }
+        else
+        {
+            await SweetAlert.FireAsync("Error", "Error al registrar el usuario", SweetAlertIcon.Error);
+        }
+        StateHasChanged();
+    }
+}
