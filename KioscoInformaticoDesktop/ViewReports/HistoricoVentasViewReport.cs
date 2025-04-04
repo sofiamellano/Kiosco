@@ -1,5 +1,5 @@
-﻿using KioscoInformaticoServices.Models;
-using Microsoft.Reporting.WinForms;
+﻿using Microsoft.Reporting.WinForms;
+using Service.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

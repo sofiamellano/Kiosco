@@ -1,7 +1,7 @@
 ﻿using Microsoft.JSInterop;
 using System.Diagnostics;
 
-namespace KioscoInformaticoWeb.Services
+namespace Web.Services
 {
     public class FirebaseAuthService
     {

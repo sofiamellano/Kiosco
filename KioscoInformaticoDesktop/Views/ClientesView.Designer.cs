@@ -1,4 +1,6 @@
-﻿namespace KioscoInformaticoDesktop.Views
+﻿using Service.Models;
+
+namespace KioscoInformaticoDesktop.Views
 {
     partial class ClientesView
     {
@@ -364,7 +366,7 @@
             // 
             // clienteBindingSource
             // 
-            clienteBindingSource.DataSource = typeof(KioscoInformaticoServices.Models.Cliente);
+            clienteBindingSource.DataSource = typeof(Cliente);
             // 
             // ClientesView
             // 

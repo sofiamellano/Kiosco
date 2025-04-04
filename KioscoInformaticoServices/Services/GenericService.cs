@@ -1,5 +1,5 @@
-﻿using KioscoInformaticoServices.Class;
-using KioscoInformaticoServices.Interfaces;
+﻿using Service.Class;
+using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace KioscoInformaticoServices.Services
+namespace Service.Services
 {
     public class GenericService<T> : IGenericService<T> where T : class
     {
@@ -18,14 +18,14 @@ namespace KioscoInformaticoServices.Services
 
         public GenericService()
         {
-            this.client = new HttpClient();
-            this.options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+            client = new HttpClient();
+            options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
 
             string urlApi = Properties.Resources.UrlApi;
-            if (Properties.Resources.Remoto=="false")
+            if (Properties.Resources.Remoto == "false")
                 urlApi = Properties.Resources.UrlApiLocal;
 
-            this._endpoint = urlApi + ApiEndpoints.GetEndpoint(typeof(T).Name);
+            _endpoint = urlApi + ApiEndpoints.GetEndpoint(typeof(T).Name);
         }
 
         public async Task<List<T>?> GetAllAsync()

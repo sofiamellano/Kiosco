@@ -1,11 +1,11 @@
 using CurrieTechnologies.Razor.SweetAlert2;
-using KioscoInformaticoServices.Interfaces;
-using KioscoInformaticoServices.Models;
-using KioscoInformaticoServices.Services;
-using KioscoInformaticoWeb;
-using KioscoInformaticoWeb.Services;
+using Service.Models;
+using Web;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Service.Interfaces;
+using Service.Services;
+using Web.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

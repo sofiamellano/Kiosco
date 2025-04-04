@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KioscoInformaticoServices.Interfaces
+namespace Service.Interfaces
 {
     public interface IGenericService<T> where T : class
     {

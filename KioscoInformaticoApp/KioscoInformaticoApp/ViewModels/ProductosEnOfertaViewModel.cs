@@ -1,6 +1,6 @@
 ﻿using KioscoInformaticoApp.Class;
-using KioscoInformaticoServices.Models;
-using KioscoInformaticoServices.Services;
+using Service.Models;
+using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

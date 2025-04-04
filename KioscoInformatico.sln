@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KioscoInformaticoServices", "KioscoInformaticoServices\KioscoInformaticoServices.csproj", "{D09B8188-42D1-4CE3-B350-3C8ACD2CE502}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "KioscoInformaticoServices\Service.csproj", "{D09B8188-42D1-4CE3-B350-3C8ACD2CE502}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KioscoInformaticoDesktop", "KioscoInformaticoDesktop\KioscoInformaticoDesktop.csproj", "{66DEE3D5-261E-4E1E-B6F6-3D7390571620}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desktop", "KioscoInformaticoDesktop\Desktop.csproj", "{66DEE3D5-261E-4E1E-B6F6-3D7390571620}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KioscoInformaticoBackend", "KioscoInformaticoBackend\KioscoInformaticoBackend.csproj", "{3CA4C2B8-758D-4764-B6F5-C419AC374BDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend", "KioscoInformaticoBackend\Backend.csproj", "{3CA4C2B8-758D-4764-B6F5-C419AC374BDB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KioscoInformaticoApp", "KioscoInformaticoApp\KioscoInformaticoApp\KioscoInformaticoApp.csproj", "{D3FE54D9-935C-4890-A76F-B1D58EE3088C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppMovil", "KioscoInformaticoApp\KioscoInformaticoApp\AppMovil.csproj", "{D3FE54D9-935C-4890-A76F-B1D58EE3088C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KioscoInformaticoWeb", "KioscoInformaticoWeb\KioscoInformaticoWeb.csproj", "{1FA2CD36-7D08-4D6D-BAF9-5501E981A14E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "KioscoInformaticoWeb\Web.csproj", "{1FA2CD36-7D08-4D6D-BAF9-5501E981A14E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

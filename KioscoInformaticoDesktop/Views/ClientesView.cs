@@ -1,7 +1,7 @@
-﻿using KioscoInformaticoServices.Interfaces;
-using KioscoInformaticoServices.Models;
-using KioscoInformaticoServices.Services;
+﻿using Service.Services;
 using Microsoft.Reporting.WinForms;
+using Service.Interfaces;
+using Service.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

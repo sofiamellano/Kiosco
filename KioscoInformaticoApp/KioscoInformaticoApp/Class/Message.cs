@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Messaging.Messages;
-using KioscoInformaticoServices.Models;
+using Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

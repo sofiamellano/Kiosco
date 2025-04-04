@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace KioscoInformaticoApp
+namespace KioscoInformaticoApp.Platforms.MacCatalyst
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

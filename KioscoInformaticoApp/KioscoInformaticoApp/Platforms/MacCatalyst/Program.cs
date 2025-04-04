@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace KioscoInformaticoApp
+namespace KioscoInformaticoApp.Platforms.MacCatalyst
 {
     public class Program
     {

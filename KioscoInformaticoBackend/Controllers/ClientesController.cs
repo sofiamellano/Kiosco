@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using KioscoInformaticoBackend.DataContext;
-using KioscoInformaticoServices.Models;
+using Backend.DataContext;
+using Service.Models;
 
-namespace KioscoInformaticoBackend.Controllers
+namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,11 +27,11 @@ namespace KioscoInformaticoBackend.Controllers
         {
             if (filtro != null)
             {
-                return await _context.Clientes.Include(c=>c.Localidad)
+                return await _context.Clientes.Include(c => c.Localidad)
                     .Where(c => c.Nombre.ToUpper().Contains(filtro.ToUpper()))
                     .ToListAsync();
             }
-            return await _context.Clientes.Include(c=>c.Localidad)
+            return await _context.Clientes.Include(c => c.Localidad)
                 .ToListAsync();
         }
 

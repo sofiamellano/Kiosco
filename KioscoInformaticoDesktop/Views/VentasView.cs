@@ -1,8 +1,8 @@
-﻿using KioscoInformaticoDesktop.ExtensionMethods;
+﻿using Desktop.ExtensionMethods;
 using KioscoInformaticoDesktop.ViewReports;
-using KioscoInformaticoServices.Enums;
-using KioscoInformaticoServices.Models;
-using KioscoInformaticoServices.Services;
+using Service.Enums;
+using Service.Models;
+using Service.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

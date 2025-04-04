@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace KioscoInformaticoServices.Models;
+namespace Service.Models;
 
 public partial class Localidad
 {
@@ -15,5 +15,5 @@ public partial class Localidad
     public override string ToString()
     {
         return Nombre;
-    } 
+    }
 }

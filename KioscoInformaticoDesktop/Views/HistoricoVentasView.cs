@@ -1,7 +1,7 @@
-﻿using KioscoInformaticoDesktop.ExtensionMethods;
+﻿using Desktop.ExtensionMethods;
 using KioscoInformaticoDesktop.ViewReports;
-using KioscoInformaticoServices.Models;
-using KioscoInformaticoServices.Services;
+using Service.Models;
+using Service.Services;
 using System.Data;
 
 namespace KioscoInformaticoDesktop.Views

@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KioscoInformaticoDesktop.ExtensionMethods
+namespace Desktop.ExtensionMethods
 {
     public static class MyExtensions
     {
@@ -105,7 +105,7 @@ namespace KioscoInformaticoDesktop.ExtensionMethods
 
         public static bool EstaVisible(this Form form)
         {
-            return Application.OpenForms.OfType<Form>().Where(f => f.Name == form.Name).SingleOrDefault<Form>() != null;
+            return Application.OpenForms.OfType<Form>().Where(f => f.Name == form.Name).SingleOrDefault() != null;
         }
 
         public static void CopyPropertiesTo<T>(this T source, T destination)

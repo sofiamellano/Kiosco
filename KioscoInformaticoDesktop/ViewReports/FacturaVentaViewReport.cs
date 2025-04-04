@@ -1,5 +1,4 @@
-﻿using KioscoInformaticoServices.Models;
-using KioscoInformaticoServices.Services;
+﻿using Service.Services;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
@@ -11,6 +10,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Service.Models;
 
 namespace KioscoInformaticoDesktop.ViewReports
 {

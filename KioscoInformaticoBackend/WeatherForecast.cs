@@ -1,4 +1,4 @@
-namespace KioscoInformaticoBackend
+namespace Backend
 {
     public class WeatherForecast
     {

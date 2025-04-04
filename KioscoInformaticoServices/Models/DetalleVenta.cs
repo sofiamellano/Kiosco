@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace KioscoInformaticoServices.Models;
+namespace Service.Models;
 
 public partial class DetalleVenta
 {

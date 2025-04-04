@@ -1,4 +1,4 @@
-using KioscoInformaticoBackend.DataContext;
+using Backend.DataContext;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 

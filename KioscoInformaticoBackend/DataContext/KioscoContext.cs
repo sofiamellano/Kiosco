@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
-using KioscoInformaticoServices.Enums;
-using KioscoInformaticoServices.Models;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+using Service.Enums;
+using Service.Models;
 
-namespace KioscoInformaticoBackend.DataContext;
+namespace Backend.DataContext;
 
 public partial class KioscoContext : DbContext
 {
@@ -36,13 +36,13 @@ public partial class KioscoContext : DbContext
 
     public virtual DbSet<Venta> Ventas { get; set; }
 
-    
 
-    
+
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var configuration = new ConfigurationBuilder()            
+        var configuration = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")
             .Build();
         string? cadenaConexion = configuration.GetConnectionString("mysqlRemoto");
@@ -300,7 +300,7 @@ public partial class KioscoContext : DbContext
 
         #endregion
 
-        
+
 
 
 

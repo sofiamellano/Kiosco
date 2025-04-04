@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using KioscoInformaticoBackend.DataContext;
-using KioscoInformaticoServices.Models;
+using Backend.DataContext;
+using Service.Models;
 
-namespace KioscoInformaticoBackend.Controllers
+namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -25,8 +25,8 @@ namespace KioscoInformaticoBackend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Venta>>> GetVentas()
         {
-            return await _context.Ventas.Include(venta=>venta.Cliente)
-                                        .Include(venta=>venta.DetallesVenta)
+            return await _context.Ventas.Include(venta => venta.Cliente)
+                                        .Include(venta => venta.DetallesVenta)
                                             .ThenInclude(detalle => detalle.Producto)
                                 .ToListAsync();
         }

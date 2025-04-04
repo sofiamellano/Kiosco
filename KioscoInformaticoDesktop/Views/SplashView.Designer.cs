@@ -50,7 +50,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.fondoKiosco;
+            BackgroundImage = Desktop.Properties.Resources.fondoKiosco;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(873, 484);
             Controls.Add(progressBar);

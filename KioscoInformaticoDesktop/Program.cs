@@ -1,6 +1,7 @@
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 
-namespace KioscoInformaticoDesktop
+namespace Desktop
 {
     internal static class Program
     {

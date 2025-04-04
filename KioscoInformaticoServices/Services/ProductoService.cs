@@ -1,5 +1,5 @@
-﻿using KioscoInformaticoServices.Interfaces;
-using KioscoInformaticoServices.Models;
+﻿using Service.Interfaces;
+using Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace KioscoInformaticoServices.Services
+namespace Service.Services
 {
     public class ProductoService : GenericService<Producto>, IProductoService
     {

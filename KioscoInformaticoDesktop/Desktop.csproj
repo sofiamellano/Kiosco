@@ -39,7 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KioscoInformaticoServices\KioscoInformaticoServices.csproj" />
+    <ProjectReference Include="..\KioscoInformaticoServices\Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

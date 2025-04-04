@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace KioscoInformaticoApp
+namespace KioscoInformaticoApp.Platforms.iOS
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

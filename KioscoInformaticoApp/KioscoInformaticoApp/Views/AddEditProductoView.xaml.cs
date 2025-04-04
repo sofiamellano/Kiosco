@@ -1,6 +1,6 @@
 //using Java.Time;
 using KioscoInformaticoApp.ViewModels;
-using KioscoInformaticoServices.Models;
+using Service.Models;
 
 namespace KioscoInformaticoApp.Views;
 

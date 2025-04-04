@@ -1,8 +1,8 @@
-﻿using KioscoInformaticoServices.Enums;
+﻿using Service.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace KioscoInformaticoServices.Models;
+namespace Service.Models;
 
 public partial class Proveedor
 {

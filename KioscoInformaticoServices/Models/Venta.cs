@@ -1,8 +1,8 @@
-﻿using KioscoInformaticoServices.Enums;
+﻿using Service.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace KioscoInformaticoServices.Models;
+namespace Service.Models;
 
 public partial class Venta
 {
@@ -13,18 +13,18 @@ public partial class Venta
 
     public FormaDePagoEnum FormaPago { get; set; }
 
-    
 
-    
+
+
 
     public decimal Iva { get; set; }
 
     public decimal Total { get; set; }
 
-    
+
     public bool Eliminado { get; set; } = false;
 
-    public  ICollection<DetalleVenta> DetallesVenta { get; set; }
+    public ICollection<DetalleVenta> DetallesVenta { get; set; }
 
     public Venta()
     {
