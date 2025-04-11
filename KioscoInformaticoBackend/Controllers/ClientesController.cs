@@ -23,7 +23,7 @@ namespace Backend.Controllers
 
         // GET: api/Clientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes([FromQuery] string? filtro)
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes([FromQuery] string? filtro="")
         {
             if (filtro != null)
             {

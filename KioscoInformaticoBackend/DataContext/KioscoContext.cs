@@ -42,12 +42,15 @@ public partial class KioscoContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var configuration = new ConfigurationBuilder()
+        if (!optionsBuilder.IsConfigured)
+        {
+            var configuration = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")
             .Build();
-        string? cadenaConexion = configuration.GetConnectionString("mysqlRemoto");
+            string? cadenaConexion = configuration.GetConnectionString("mysqlRemoto");
 
-        optionsBuilder.UseMySql(cadenaConexion, ServerVersion.AutoDetect(cadenaConexion));
+            optionsBuilder.UseMySql(cadenaConexion, ServerVersion.AutoDetect(cadenaConexion));
+        }
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
