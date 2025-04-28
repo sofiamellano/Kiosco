@@ -113,10 +113,60 @@ namespace Backend.Tests
             }
             // Cerrar la conexión al finalizar
             connection.Close();
-
-
-
         }
+        [Fact]
+        public async void GetCliente_NoFound()
+        {
+            //*** Arrange
+            // Crear la base de datos y aplicar las migraciones
+            using (var context = new KioscoContext(options))
+            {
+                context.Database.EnsureCreated();
+                var clientesController = new ClientesController(context);
+                //***ACT
+                var result = await clientesController.GetCliente(1000);
+                //***ASSERT
+                //verifico que el resultado no sea nulo
+                Assert.NotNull(result);
+                //verifico que el resultado sea de tipo NotFoundResult
+                Assert.IsType<NotFoundResult>(result.Result);
+            }
+            // Cerrar la conexión al finalizar
+            connection.Close();
+        }
+        [Fact]
+        public async void PutCliente_BadRequest_ArgumentNull()
+        {
+            //*** Arrange
+            // Crear la base de datos y aplicar las migraciones
+            using (var context = new KioscoContext(options))
+            {
+                context.Database.EnsureCreated();
+                var clientesController = new ClientesController(context);
+                //***ACT
+                //verifico que el resultado sea de tipo BadRequest
+                var result = await clientesController.PutCliente(null, null);
+                Assert.IsType<BadRequestResult>(result);
+            }
+            // Cerrar la conexión al finalizar
+            connection.Close();
+        }
+        //[Fact]
+        //public async void PutCliente_ArgumentNullException()
+        //{
+        //    //*** Arrange
+        //    // Crear la base de datos y aplicar las migraciones
+        //    using (var context = new KioscoContext(options))
+        //    {
+        //        context.Database.EnsureCreated();
+        //        var clientesController = new ClientesController(context);
+        //        //***ACT
+        //        //verifico que el resultado sea de tipo ArgumentNullException
+        //        await Assert.ThrowsAsync<ArgumentNullException>(async () => await clientesController.PutCliente(null, null));
+        //    }
+        //    // Cerrar la conexión al finalizar
+        //    connection.Close();
+        //}
 
     }
 }

@@ -52,8 +52,13 @@ namespace Backend.Controllers
         // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCliente(int id, Cliente cliente)
+        public async Task<IActionResult> PutCliente(int? id, Cliente cliente)
         {
+            if(id==null || cliente == null)
+            {
+                //throw new ArgumentNullException();
+                return BadRequest();
+            }
             if (id != cliente.Id)
             {
                 return BadRequest();
@@ -107,7 +112,7 @@ namespace Backend.Controllers
             return NoContent();
         }
 
-        private bool ClienteExists(int id)
+        private bool ClienteExists(int? id)
         {
             return _context.Clientes.Any(e => e.Id == id);
         }
