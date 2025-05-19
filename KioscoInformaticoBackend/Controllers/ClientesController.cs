@@ -25,14 +25,9 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes([FromQuery] string? filtro="")
         {
-            if (filtro != null)
-            {
                 return await _context.Clientes.Include(c => c.Localidad)
                     .Where(c => c.Nombre.ToUpper().Contains(filtro.ToUpper()))
-                    .ToListAsync();
-            }
-            return await _context.Clientes.Include(c => c.Localidad)
-                .ToListAsync();
+                    .ToListAsync(); 
         }
 
         // GET: api/Clientes/5
