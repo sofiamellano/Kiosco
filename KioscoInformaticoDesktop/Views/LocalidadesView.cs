@@ -38,6 +38,20 @@ namespace KioscoInformaticoDesktop.Views
 
             currentState = InitialDisplayState;
             currentState.UpdateUI();
+            tabControl.Selecting += tabControl_Selecting;
+        }
+
+        private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            // Si el usuario intenta ir a la pestaña de agregar/editar manualmente
+            if (e.TabPage == tabPageAgregarEditar)
+            {
+                // Solo permite si el estado actual es AddState o EditState
+                if (!(currentState is AddState) && !(currentState is EditState))
+                {
+                    e.Cancel = true;
+                }
+            }
         }
 
         public void SetState(IFormState state)

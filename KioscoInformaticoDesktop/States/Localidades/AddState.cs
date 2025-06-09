@@ -40,6 +40,7 @@ namespace Desktop.States.Localidades
         }
         public Task UpdateUI()
         {
+            _form.txtNombre.Clear();
             _form.tabControl.SelectTab(_form.tabPageAgregarEditar);
             return Task.CompletedTask;
         }

@@ -38,6 +38,8 @@ namespace Desktop.States.Localidades
         }
         public Task UpdateUI()
         {
+            _form.localidadCurrent = _form.dataGridLocalidades.CurrentRow.DataBoundItem as Localidad;
+            _form.txtNombre.Text = _form.localidadCurrent.Nombre;
             _form.tabControl.SelectTab(_form.tabPageAgregarEditar);
             return Task.CompletedTask;
         }
