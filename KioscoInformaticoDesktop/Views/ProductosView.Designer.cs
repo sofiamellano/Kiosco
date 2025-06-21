@@ -161,7 +161,6 @@
             txtFiltro.Name = "txtFiltro";
             txtFiltro.Size = new Size(682, 27);
             txtFiltro.TabIndex = 7;
-            txtFiltro.TextChanged += txtFiltro_TextChanged;
             // 
             // iconButtonEliminar
             // 
@@ -268,7 +267,7 @@
             numericPrecio.DecimalPlaces = 2;
             numericPrecio.Location = new Point(445, 207);
             numericPrecio.Margin = new Padding(3, 4, 3, 4);
-            numericPrecio.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            numericPrecio.Maximum = new decimal(new int[] { 268435456, 1042612833, 542101086, 0 });
             numericPrecio.Name = "numericPrecio";
             numericPrecio.Size = new Size(225, 27);
             numericPrecio.TabIndex = 13;
@@ -358,21 +357,15 @@
 
         private Panel panel1;
         private Label label1;
-        private TabControl tabControl;
-        private TabPage tabPageLista;
         private FontAwesome.Sharp.IconButton btnEliminar;
         private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnAgregar;
-        private DataGridView dataGridProductosView;
-        private TabPage tabPageAgregarEditar;
         private FontAwesome.Sharp.IconButton btnCancelar;
         private FontAwesome.Sharp.IconButton btnGuardar;
-        private TextBox txtNombre;
         private Label label2;
         private FontAwesome.Sharp.IconButton iconButtonEliminar;
         private FontAwesome.Sharp.IconButton iconButtonEditar;
         private FontAwesome.Sharp.IconButton iconButtonAgregar;
-        private NumericUpDown numericPrecio;
         private Label txtPrecio;
         private FontAwesome.Sharp.IconButton iconButton1;
         private Label label3;
@@ -380,6 +373,12 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButtonSalir;
         private FontAwesome.Sharp.IconButton BtnBuscar;
-        private TextBox txtFiltro;
+        public DataGridView dataGridProductosView;
+        public TextBox txtFiltro;
+        public TabControl tabControl;
+        public TabPage tabPageLista;
+        public TabPage tabPageAgregarEditar;
+        public TextBox txtNombre;
+        public NumericUpDown numericPrecio;
     }
 }

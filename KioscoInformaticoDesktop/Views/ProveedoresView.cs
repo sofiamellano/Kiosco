@@ -10,22 +10,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Desktop.Interfaces;
+using System.Windows.Controls;
+using Desktop.States.Proveedores;
 
 namespace KioscoInformaticoDesktop.Views
 {
     public partial class ProveedoresView : Form
     {
-        IProveedorService proveedorService = new ProveedorService();
-        ILocalidadService localidadService = new LocalidadService();
-        BindingSource ListProveedores = new BindingSource();
-        Proveedor proveedorCurrent;
+        public IFormState InitialDisplayState;
+        public IFormState AddState;
+        public IFormState EditState;
+        public IFormState DeleteState;
+        public IFormState currentState;
+
+       public IProveedorService proveedorService = new ProveedorService();
+       public ILocalidadService localidadService = new LocalidadService();
+       public BindingSource ListProveedores = new BindingSource();
+       public Proveedor proveedorCurrent;
         public ProveedoresView()
         {
             InitializeComponent();
-            dataGridProveedoresView.DataSource = ListProveedores;
-            CargarGrilla();
-            _ = CargarCombo();
+
+            InitialDisplayState = new InitialDisplayState(this);
+            AddState = new AddState(this);
+            EditState = new EditState(this);
+            DeleteState = new DeleteState(this);
+
+            currentState = InitialDisplayState;
+            currentState.UpdateUI();
+            tabControl1.Selecting += tabControl_Selecting;
         }
+
+        private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            // Si el usuario intenta ir a la pestaña de agregar/editar manualmente
+            if (e.TabPage == tabPageEditarAgregar)
+            {
+                // Solo permite si el estado actual es AddState o EditState
+                if (!(currentState is AddState) && !(currentState is EditState))
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        public void SetState(IFormState state)
+        {
+            currentState = state ?? throw new ArgumentNullException(nameof(state), "El estado no puede ser null");
+        }
+
 
         private async Task CargarCombo()
         {
@@ -36,101 +70,97 @@ namespace KioscoInformaticoDesktop.Views
 
         }
 
-        private async Task CargarGrilla()
-        {
-            var proveedores = await proveedorService.GetAllAsync(null);
-            ListProveedores.DataSource = proveedores;
-            dataGridProveedoresView.Columns[6].Visible = false;
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(tabPageEditarAgregar);
+            SetState(AddState);
+            currentState.OnAdd();
+            //tabControl1.SelectTab(tabPageEditarAgregar);
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (proveedorCurrent != null)
-            {
-                proveedorCurrent.Nombre = txtNombre.Text;
-                proveedorCurrent.Direccion = txtDireccion.Text;
-                proveedorCurrent.Telefonos = txtTelefonos.Text;
-                proveedorCurrent.Cbu = txtCbu.Text;
-                proveedorCurrent.LocalidadId = (int)comboLocalidades.SelectedValue;
-                await proveedorService.UpdateAsync(proveedorCurrent);
-                proveedorCurrent = null;
-            }
-            else
-            {
-                var proveedor = new Proveedor
-                {
-                    Nombre = txtNombre.Text,
-                    Direccion = txtDireccion.Text,
-                    Telefonos = txtTelefonos.Text,
-                    Cbu = txtCbu.Text,
-                    LocalidadId = (int)comboLocalidades.SelectedValue,
-                };
-                await proveedorService.AddAsync(proveedor);
-            }
-            await CargarGrilla();
-            txtNombre.Text = string.Empty;
-            txtDireccion.Text = string.Empty;
-            txtTelefonos.Text = string.Empty;
-            txtCbu.Text = string.Empty;
-            tabControl1.SelectTab(tabPageLista);
+            currentState.OnSave();
+            //if (proveedorCurrent != null)
+            //{
+            //    proveedorCurrent.Nombre = txtNombre.Text;
+            //    proveedorCurrent.Direccion = txtDireccion.Text;
+            //    proveedorCurrent.Telefonos = txtTelefonos.Text;
+            //    proveedorCurrent.Cbu = txtCbu.Text;
+            //    proveedorCurrent.LocalidadId = (int)comboLocalidades.SelectedValue;
+            //    await proveedorService.UpdateAsync(proveedorCurrent);
+            //    proveedorCurrent = null;
+            //}
+            //else
+            //{
+            //    var proveedor = new Proveedor
+            //    {
+            //        Nombre = txtNombre.Text,
+            //        Direccion = txtDireccion.Text,
+            //        Telefonos = txtTelefonos.Text,
+            //        Cbu = txtCbu.Text,
+            //        LocalidadId = (int)comboLocalidades.SelectedValue,
+            //    };
+            //    await proveedorService.AddAsync(proveedor);
+            //}
+            //await CargarGrilla();
+            //txtNombre.Text = string.Empty;
+            //txtDireccion.Text = string.Empty;
+            //txtTelefonos.Text = string.Empty;
+            //txtCbu.Text = string.Empty;
+            //tabControl1.SelectTab(tabPageLista);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            proveedorCurrent = null;
-            txtNombre.Text = string.Empty;
-            txtDireccion.Text = string.Empty;
-            txtTelefonos.Text = string.Empty;
-            txtCbu.Text = string.Empty;
-            tabControl1.SelectTab(tabPageLista);
+            currentState.OnCancel();
+            //proveedorCurrent = null;
+            //txtNombre.Text = string.Empty;
+            //txtDireccion.Text = string.Empty;
+            //txtTelefonos.Text = string.Empty;
+            //txtCbu.Text = string.Empty;
+            //tabControl1.SelectTab(tabPageLista);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            proveedorCurrent = (Proveedor)ListProveedores.Current;
-            txtNombre.Text = proveedorCurrent.Nombre;
-            txtDireccion.Text = proveedorCurrent.Direccion;
-            txtTelefonos.Text = proveedorCurrent.Telefonos;
-            txtCbu.Text = proveedorCurrent.Cbu;
-            comboLocalidades.SelectedValue = proveedorCurrent.LocalidadId;
-            tabControl1.SelectTab(tabPageEditarAgregar);
+            SetState(EditState);
+            currentState.OnEdit();
+            //proveedorCurrent = (Proveedor)ListProveedores.Current;
+            //txtNombre.Text = proveedorCurrent.Nombre;
+            //txtDireccion.Text = proveedorCurrent.Direccion;
+            //txtTelefonos.Text = proveedorCurrent.Telefonos;
+            //txtCbu.Text = proveedorCurrent.Cbu;
+            //comboLocalidades.SelectedValue = proveedorCurrent.LocalidadId;
+            //tabControl1.SelectTab(tabPageEditarAgregar);
         }
 
         private async void btnEliminar_Click(object sender, EventArgs e)
         {
-            proveedorCurrent = (Proveedor)ListProveedores.Current;
-            if (proveedorCurrent == null)
-            {
-                MessageBox.Show("Debe seleccionar un proveedor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            var result = MessageBox.Show($"¿Está seguro que desea eliminar el proveedor {proveedorCurrent.Nombre}?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                proveedorCurrent = (Proveedor)ListProveedores.Current;
-                if (proveedorCurrent != null)
-                {
-                    await proveedorService.DeleteAsync(proveedorCurrent.Id);
-                    await CargarGrilla();
-                }
-            }
-            proveedorCurrent = null;
+            SetState(DeleteState);
+            currentState.OnDelete();
+            //proveedorCurrent = (Proveedor)ListProveedores.Current;
+            //if (proveedorCurrent == null)
+            //{
+            //    MessageBox.Show("Debe seleccionar un proveedor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+            //var result = MessageBox.Show($"¿Está seguro que desea eliminar el proveedor {proveedorCurrent.Nombre}?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (result == DialogResult.Yes)
+            //{
+            //    proveedorCurrent = (Proveedor)ListProveedores.Current;
+            //    if (proveedorCurrent != null)
+            //    {
+            //        await proveedorService.DeleteAsync(proveedorCurrent.Id);
+            //        await CargarGrilla();
+            //    }
+            //}
+            //proveedorCurrent = null;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            FiltrarProveedor();
+            currentState.OnSearch();
         }
 
-        private async void FiltrarProveedor()
-        {
-            var proveedoresFiltrados = await proveedorService.GetAllAsync(txtFiltro.Text);
-            ListProveedores.DataSource = proveedoresFiltrados;
-        }
     }
 }
