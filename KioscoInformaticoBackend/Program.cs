@@ -39,7 +39,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 FirebaseApp.Create(new AppOptions()
 {
-    Credential = GoogleCredential.FromFile("Firebase/kioscoinformatico-312f4-firebase-adminsdk-d1tq0-17a0006285")
+    Credential = GoogleCredential.FromFile("Firebase/kioscoinformatico-312f4-firebase-adminsdk-d1tq0-17a0006285.json")
 });
 
 builder.Services.AddAuthorization();

@@ -23,13 +23,9 @@ namespace Backend.Controllers
 
         // GET: api/Localidades
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Localidad>>> GetLocalidades([FromQuery] string? filtro)
+        public async Task<ActionResult<IEnumerable<Localidad>>> GetLocalidades([FromQuery] string? filtro = "")
         {
-            if (filtro != null)
-            {
                 return await _context.Localidades.Where(l => l.Nombre.ToUpper().Contains(filtro.ToUpper())).ToListAsync();
-            }
-            return await _context.Localidades.ToListAsync();
         }
 
         // GET: api/Localidades/5
