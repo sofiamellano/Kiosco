@@ -10,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Service.Models;
 
 namespace KioscoInformaticoDesktop.ViewReports
 {
     public partial class LocalidadesViewReport : Form
     {
         ReportViewer reporte;
-        ILocalidadService localidadService = new LocalidadService();
+        IGenericService<Localidad> localidadService = new GenericService<Localidad>();
         public LocalidadesViewReport()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace KioscoInformaticoDesktop.ViewReports
         private async void LocalidadesViewReport_Load(object sender, EventArgs e)
         {
             reporte.LocalReport.ReportEmbeddedResource = "KioscoInformaticoDesktop.Reports.LocalidadesReport.rdlc";
-            var localidades = await localidadService.GetAllAsync();
+            var localidades = await localidadService.GetAllAsync(string.Empty);
             reporte.LocalReport.DataSources.Add(new ReportDataSource("DSLocalidades", localidades));
             reporte.SetDisplayMode(DisplayMode.PrintLayout);
             reporte.RefreshReport();

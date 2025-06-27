@@ -24,8 +24,8 @@ namespace KioscoInformaticoDesktop.Views
         public IFormState DeleteState;
         public IFormState currentState;
 
-       public IProveedorService proveedorService = new ProveedorService();
-       public ILocalidadService localidadService = new LocalidadService();
+       public IGenericService<Proveedor> proveedorService = new GenericService<Proveedor>();
+       public IGenericService<Localidad> localidadService = new GenericService<Localidad>();
        public BindingSource ListProveedores = new BindingSource();
        public Proveedor proveedorCurrent;
         public ProveedoresView()
@@ -58,16 +58,6 @@ namespace KioscoInformaticoDesktop.Views
         public void SetState(IFormState state)
         {
             currentState = state ?? throw new ArgumentNullException(nameof(state), "El estado no puede ser null");
-        }
-
-
-        private async Task CargarCombo()
-        {
-            comboLocalidades.DataSource = await localidadService.GetAllAsync();
-            comboLocalidades.DisplayMember = "Nombre";
-            comboLocalidades.ValueMember = "Id";
-            comboLocalidades.SelectedIndex = -1;
-
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)

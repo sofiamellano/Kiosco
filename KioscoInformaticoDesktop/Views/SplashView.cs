@@ -68,8 +68,8 @@ namespace KioscoInformaticoDesktop.Views
         {
             await Task.Run(async () =>
             {
-                ClienteService clienteService = new ClienteService();
-                var clientes = await clienteService.GetAllAsync();
+                GenericService<Cliente> clienteService = new GenericService<Cliente>();
+                var clientes = await clienteService.GetAllAsync(string.Empty);
                 dataReady = true;
             });
         }

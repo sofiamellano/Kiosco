@@ -32,7 +32,7 @@ namespace Desktop.States.Proveedores
         }
         private async Task CargarCombo()
         {
-            _form.comboLocalidades.DataSource = await _form.localidadService.GetAllAsync();
+            _form.comboLocalidades.DataSource = await _form.localidadService.GetAllAsync(_form.txtFiltro.Text);
             _form.comboLocalidades.DisplayMember = "Nombre";
             _form.comboLocalidades.ValueMember = "Id";
             _form.comboLocalidades.SelectedIndex = -1;

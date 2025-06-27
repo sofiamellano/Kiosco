@@ -414,7 +414,6 @@
         private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnAgregar;
         private FontAwesome.Sharp.IconButton btnBuscar;
-        private TextBox txtFiltro;
         private Label label7;
         private Label label8;
         public TabControl tabControl1;
@@ -427,5 +426,6 @@
         public ComboBox comboLocalidades;
         public DataGridView dataGridProveedoresView;
         public TextBox txtCondicionIVA;
+        public TextBox txtFiltro;
     }
 }

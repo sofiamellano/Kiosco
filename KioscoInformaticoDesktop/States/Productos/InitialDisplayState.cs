@@ -24,7 +24,7 @@ namespace Desktop.States.Productos
         }
         public async Task UpdateUI()
         {
-            var productos = await _form.productoService.GetAllAsync(); 
+            var productos = await _form.productoService.GetAllAsync(_form.txtFiltro.Text); 
             _form.ListProductos.DataSource = productos;
             _form.dataGridProductosView.DataSource = _form.ListProductos;
             _form.tabControl.SelectTab(_form.tabPageLista);

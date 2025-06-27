@@ -18,7 +18,7 @@ namespace KioscoInformaticoDesktop.Views
 {
     public partial class VentasView : Form
     {
-        ClienteService clienteService = new ClienteService();
+        GenericService<Cliente> clienteService = new GenericService<Cliente>();
         ProductoService productoService = new ProductoService();
         GenericService<Venta> ventaService = new GenericService<Venta>();
         Venta venta = new Venta();
@@ -33,7 +33,7 @@ namespace KioscoInformaticoDesktop.Views
         {
             #region carga de combos
             await Task.WhenAll(
-                Task.Run(async () => comboBoxClientes.DataSource = await clienteService.GetAllAsync()),
+                Task.Run(async () => comboBoxClientes.DataSource = await clienteService.GetAllAsync(string.Empty)),
                 Task.Run(async () => comboBoxProductos.DataSource = await productoService.GetAllAsync())
             );
             comboBoxClientes.DisplayMember = "Nombre";

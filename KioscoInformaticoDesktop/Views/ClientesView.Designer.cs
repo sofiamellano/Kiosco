@@ -31,7 +31,7 @@ namespace KioscoInformaticoDesktop.Views
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label1 = new Label();
             tabControl = new TabControl();
@@ -217,16 +217,16 @@ namespace KioscoInformaticoDesktop.Views
             dataGridClientesView.AllowUserToDeleteRows = false;
             dataGridClientesView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridClientesView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridClientesView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridClientesView.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridClientesView.Location = new Point(3, 97);
             dataGridClientesView.Margin = new Padding(3, 4, 3, 4);
             dataGridClientesView.Name = "dataGridClientesView";
@@ -410,7 +410,6 @@ namespace KioscoInformaticoDesktop.Views
 
         private Panel panel1;
         private Label label1;
-        private TextBox txtFiltro;
         private Label label3;
         private FontAwesome.Sharp.IconButton btnCancelar;
         private FontAwesome.Sharp.IconButton btnGuardar;
@@ -433,5 +432,6 @@ namespace KioscoInformaticoDesktop.Views
         public TextBox txtTelefonos;
         public ComboBox comboLocalidades;
         public DateTimePicker dateTimeFechaNacimiento;
+        public TextBox txtFiltro;
     }
 }

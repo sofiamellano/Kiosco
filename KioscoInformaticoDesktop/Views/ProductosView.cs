@@ -41,9 +41,6 @@ namespace KioscoInformaticoDesktop.Views
             currentState = InitialDisplayState;
             currentState.UpdateUI();
             tabControl.Selecting += tabControl_Selecting;
-
-            //dataGridProductosView.DataSource = ListProductos;
-            //CargarGrilla();
         }
 
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
@@ -63,82 +60,33 @@ namespace KioscoInformaticoDesktop.Views
         {
             currentState = state ?? throw new ArgumentNullException(nameof(state), "El estado no puede ser null");
         }
-        private async Task CargarGrilla()
-        {
-            ListProductos.DataSource = await productoService.GetAllAsync();
-            ListaAFiltrar = (List<Producto>)ListProductos.DataSource;
-
-        }
 
         private void iconButtonAgregar_Click(object sender, EventArgs e)
         {
             SetState(AddState);
             currentState.OnAdd();
-            //tabControl.SelectTab(tabPageAgregarEditar);
         }
 
         private void iconButtonEditar_Click(object sender, EventArgs e)
         {
             SetState(EditState);
             currentState.OnEdit();
-            //productoCurrent = (Producto)ListProductos.Current;
-            //txtNombre.Text = productoCurrent.Nombre;
-            //numericPrecio.Value = productoCurrent.Precio;
-            //tabControl.SelectTab(tabPageAgregarEditar);
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
             currentState.OnSave();
-            //if (string.IsNullOrEmpty(txtNombre.Text))
-            //{
-            //    MessageBox.Show("El nombre del producto es obligatorio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-            //if (productoCurrent != null)
-            //{
-            //    productoCurrent.Nombre = txtNombre.Text;
-            //    productoCurrent.Precio = numericPrecio.Value;
-            //    await productoService.UpdateAsync(productoCurrent);
-            //    productoCurrent = null;
-            //}
-            //else
-            //{
-            //    decimal precio = numericPrecio.Value;
-            //    var producto = new Producto
-            //    {
-            //        Nombre = txtNombre.Text,
-            //        Precio = precio
-            //    };
-            //    await productoService.AddAsync(producto);
-
-            //}
-            //await CargarGrilla();
-            //txtNombre.Text = string.Empty;
-            //numericPrecio.Value = 0;
-            //tabControl.SelectTab(tabPageLista);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             currentState.OnCancel();
-            //this.Close();
         }
 
         private async void iconButtonEliminar_Click(object sender, EventArgs e)
         {
             SetState(DeleteState);
             currentState.OnDelete();
-            //var result = MessageBox.Show("¿Está seguro que desea eliminar el producto?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //if (result == DialogResult.Yes)
-            //{
-            //    productoCurrent = ListProductos.Current as Producto;
-            //    if (productoCurrent != null)
-            //    {
-            //        await productoService.DeleteAsync(productoCurrent.Id);
-            //        await CargarGrilla();
-            //    }
-            //}
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)

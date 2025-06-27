@@ -24,8 +24,8 @@ namespace KioscoInformaticoDesktop.Views
         public IFormState DeleteState;
         public IFormState currentState;
 
-        public IClienteService clienteService = new ClienteService();
-        public ILocalidadService localidadService = new LocalidadService();
+        public IGenericService<Cliente> clienteService = new GenericService<Cliente>();
+        public IGenericService<Localidad> localidadService = new GenericService<Localidad>();
         public BindingSource ListClientes = new BindingSource();
         public Cliente clienteCurrent;
         public ClientesView()

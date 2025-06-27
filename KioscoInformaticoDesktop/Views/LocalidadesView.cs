@@ -23,7 +23,7 @@ namespace KioscoInformaticoDesktop.Views
         public IFormState DeleteState;
         public IFormState currentState;
 
-        public ILocalidadService localidadService = new LocalidadService();
+        public IGenericService<Localidad> localidadService = new GenericService<Localidad>();
         public BindingSource listaLocalidades = new BindingSource();
         public Localidad localidadCurrent;
 
