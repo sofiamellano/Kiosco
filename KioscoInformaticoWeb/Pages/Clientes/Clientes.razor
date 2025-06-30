@@ -1,5 +1,5 @@
 ﻿@page "/clientes"
-@inject IClienteService ClienteService
+@inject IGenericService<Cliente> ClienteService
 @inject NavigationManager NavigationManager
 @inject SweetAlertService SweetAlert
 
@@ -47,7 +47,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        clientes = await ClienteService.GetAllAsync();
+        clientes = await ClienteService.GetAllAsync(string.Empty);
     }
     private void AgregarCliente()
     {
@@ -69,7 +69,7 @@ else
         if (respuesta.IsConfirmed)
         {
             await ClienteService.DeleteAsync(cliente.Id);
-            clientes = await ClienteService.GetAllAsync();
+            clientes = await ClienteService.GetAllAsync(string.Empty);
             StateHasChanged();
         }
     }

@@ -44,7 +44,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        productos = await ProductoService.GetAllAsync();
+        productos = await ProductoService.GetAllAsync(string.Empty);
     }
 
     public void AgregarProducto()
@@ -55,7 +55,7 @@ else
     public async Task Eliminar(Producto producto)
     {
         await ProductoService.DeleteAsync(producto.Id);
-        productos = await ProductoService.GetAllAsync();
+        productos = await ProductoService.GetAllAsync(string.Empty);
         StateHasChanged();
     }
 }
