@@ -28,7 +28,7 @@ namespace Desktop.States.Clientes
             await CargarCombo();
             var token = MenuPrincipalView.jwtToken;
 
-            var clientes = await _form.clienteService.GetAllAsync(null,token);
+            var clientes = await _form.clienteService.GetAllAsync(token, null);
             _form.ListClientes.DataSource = clientes;
             _form.dataGridClientesView.DataSource = _form.ListClientes;
             _form.tabControl.SelectTab(_form.tabPageLista);

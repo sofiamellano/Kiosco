@@ -47,6 +47,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        
+
         clientes = await ClienteService.GetAllAsync(string.Empty);
     }
     private void AgregarCliente()
