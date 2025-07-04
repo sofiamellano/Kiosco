@@ -55,14 +55,6 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_3B67272413414AD5AA57CEE718F7BEA7 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3F2D545C6C9C4B439E1A013A154DCCFD }}
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'backendkioscosofi'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.GOOGLE_CREDENTIALS }}
-          package: .
       - name: Set environment variable in Azure App Service
         uses: Azure/appservice-settings@v1
         with:
@@ -74,7 +66,21 @@ jobs:
                 "name": "GOOGLE_CREDENTIALS",
                 "value": "${{ secrets.GOOGLE_CREDENTIALS }}",
                 "slotSetting": false
+              },
+              {
+                "name": "ConnectionStrings__mysqlRemoto",
+                "value": "${{ secrets.MYSQL_REMOTO_CONNECTION_STRING }}",
+                "slotSetting": false
               }
             ]
               
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'backendkioscosofi'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }}
+          package: .
+     
           
