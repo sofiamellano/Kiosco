@@ -1,4 +1,5 @@
 ﻿using Desktop.Interfaces;
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 using Service.Models;
 using System;
@@ -22,7 +23,9 @@ namespace Desktop.States.Localidades
             var result = MessageBox.Show($"¿Está seguro que desea eliminar la localidad {localidad.Nombre}?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                await _form.localidadService.DeleteAsync(localidad.Id);
+                var token = MenuPrincipalView.jwtToken;
+
+                await _form.localidadService.DeleteAsync(localidad.Id, token);
                 _form.SetState(_form.InitialDisplayState);
                 _form.currentState.UpdateUI();
             }

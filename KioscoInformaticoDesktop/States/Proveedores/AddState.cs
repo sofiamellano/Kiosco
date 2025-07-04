@@ -1,4 +1,5 @@
 using Desktop.Interfaces;
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 using Service.Models;
 using System;
@@ -35,7 +36,9 @@ namespace Desktop.States.Proveedores
                 Cbu = _form.txtCbu.Text,
                 LocalidadId = (int)_form.comboLocalidades.SelectedValue,
             };
-            await _form.proveedorService.AddAsync(proveedor);
+            var token = MenuPrincipalView.jwtToken;
+
+            await _form.proveedorService.AddAsync(proveedor, token);
             _form.SetState(_form.InitialDisplayState);
             await _form.currentState.UpdateUI();
         }

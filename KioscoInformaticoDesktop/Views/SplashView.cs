@@ -13,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Desktop.Views;
+using Newtonsoft.Json.Linq;
 
 namespace KioscoInformaticoDesktop.Views
 {
@@ -41,8 +43,8 @@ namespace KioscoInformaticoDesktop.Views
             {
                 timer.Enabled = false;
                 this.Visible = false;
-                var frmMenuPrincipal = new MenuPrincipalView();
-                frmMenuPrincipal.ShowDialog();
+                var menuPrincipalView = new MenuPrincipalView();
+                menuPrincipalView.ShowDialog();
                 this.Close();
             }
         }
@@ -68,8 +70,10 @@ namespace KioscoInformaticoDesktop.Views
         {
             await Task.Run(async () =>
             {
+                var token = MenuPrincipalView.jwtToken;
+
                 GenericService<Cliente> clienteService = new GenericService<Cliente>();
-                var clientes = await clienteService.GetAllAsync(string.Empty);
+                var clientes = await clienteService.GetAllAsync(token, string.Empty);
                 dataReady = true;
             });
         }

@@ -1,4 +1,5 @@
 using Desktop.Interfaces;
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 using Service.Models;
 using System;
@@ -29,7 +30,9 @@ namespace Desktop.States.Clientes
             {
                 if (_form.clienteCurrent != null)
                 {
-                    await _form.clienteService.DeleteAsync(_form.clienteCurrent.Id);
+                    var token = MenuPrincipalView.jwtToken;
+
+                    await _form.clienteService.DeleteAsync(_form.clienteCurrent.Id, token);
                     _form.SetState(_form.InitialDisplayState);
                     _form.currentState.UpdateUI();
                 }

@@ -1,4 +1,5 @@
 ﻿using Desktop.Interfaces;
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 using Service.Interfaces;
 using Service.Services;
@@ -24,7 +25,9 @@ namespace Desktop.States.Productos
         }
         public async Task UpdateUI()
         {
-            var productos = await _form.productoService.GetAllAsync(_form.txtFiltro.Text); 
+            var token = MenuPrincipalView.jwtToken;
+
+            var productos = await _form.productoService.GetAllAsync(token, _form.txtFiltro.Text); 
             _form.ListProductos.DataSource = productos;
             _form.dataGridProductosView.DataSource = _form.ListProductos;
             _form.tabControl.SelectTab(_form.tabPageLista);

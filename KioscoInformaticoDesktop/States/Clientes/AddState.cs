@@ -1,4 +1,5 @@
 using Desktop.Interfaces;
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 using Service.Models;
 using System;
@@ -35,7 +36,8 @@ namespace Desktop.States.Clientes
                 LocalidadId = (int)_form.comboLocalidades.SelectedValue,
                 FechaNacimiento = _form.dateTimeFechaNacimiento.Value
             };
-            await _form.clienteService.AddAsync(cliente);
+            var token = MenuPrincipalView.jwtToken;
+            await _form.clienteService.AddAsync(cliente, token);
             _form.SetState(_form.InitialDisplayState);
             await _form.currentState.UpdateUI();
         }

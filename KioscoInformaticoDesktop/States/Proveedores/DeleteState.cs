@@ -1,4 +1,5 @@
 using Desktop.Interfaces;
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 using Service.Models;
 using System;
@@ -29,7 +30,9 @@ namespace Desktop.States.Proveedores
             {
                 if (_form.proveedorCurrent != null)
                 {
-                    await _form.proveedorService.DeleteAsync(_form.proveedorCurrent.Id);
+                    var token = MenuPrincipalView.jwtToken;
+
+                    await _form.proveedorService.DeleteAsync(_form.proveedorCurrent.Id, token);
                     _form.SetState(_form.InitialDisplayState);
                     _form.currentState.UpdateUI();
                 }

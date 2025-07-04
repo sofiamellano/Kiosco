@@ -1,4 +1,5 @@
 ﻿using Desktop.Interfaces;
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 using Service.Interfaces;
 using Service.Services;
@@ -24,7 +25,9 @@ namespace Desktop.States.Localidades
         }
         public async Task UpdateUI()
         {
-            _form.listaLocalidades.DataSource = await _form.localidadService.GetAllAsync(_form.txtFiltro.Text);
+            var token = MenuPrincipalView.jwtToken;
+
+            _form.listaLocalidades.DataSource = await _form.localidadService.GetAllAsync(token, _form.txtFiltro.Text);
             _form.dataGridLocalidades.DataSource = _form.listaLocalidades;
             _form.tabControl.SelectTab(_form.tabPageLista);
         }

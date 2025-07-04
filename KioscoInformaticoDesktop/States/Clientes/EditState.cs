@@ -1,4 +1,5 @@
 using Desktop.Interfaces;
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 using Service.Models;
 using System;
@@ -32,8 +33,10 @@ namespace Desktop.States.Clientes
             _form.clienteCurrent.Telefonos = _form.txtTelefonos.Text;
             _form.clienteCurrent.LocalidadId = (int)_form.comboLocalidades.SelectedValue;
             _form.clienteCurrent.FechaNacimiento = _form.dateTimeFechaNacimiento.Value;
-            
-            await _form.clienteService.UpdateAsync(_form.clienteCurrent);
+
+            var token = MenuPrincipalView.jwtToken;
+
+            await _form.clienteService.UpdateAsync(_form.clienteCurrent, token);
             _form.SetState(_form.InitialDisplayState);
             await _form.currentState.UpdateUI();
         }

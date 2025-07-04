@@ -1,4 +1,5 @@
 ﻿using Desktop.Interfaces;
+using KioscoInformaticoDesktop;
 using KioscoInformaticoDesktop.Views;
 using Service.Models;
 using System;
@@ -25,7 +26,9 @@ namespace Desktop.States.Productos
                 _form.productoCurrent = _form.ListProductos.Current as Producto;
                 if (_form.productoCurrent != null)
                 {
-                    await _form.productoService.DeleteAsync(_form.productoCurrent.Id);
+                    var token = MenuPrincipalView.jwtToken;
+
+                    await _form.productoService.DeleteAsync(_form.productoCurrent.Id, token);
                     _form.SetState(_form.InitialDisplayState);
                     _form.currentState.UpdateUI();
                 }
