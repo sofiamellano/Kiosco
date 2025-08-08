@@ -19,9 +19,8 @@ namespace KioscoInformaticoDesktop.Views
 
         private async void LoadData()
         {
-            var token = MenuPrincipalView.jwtToken;
 
-            ventas = await _ventaService.GetAllAsync(token);
+            ventas = await _ventaService.GetAllAsync();
             DisplayDataGrid();
             CalculeTotal();
         }

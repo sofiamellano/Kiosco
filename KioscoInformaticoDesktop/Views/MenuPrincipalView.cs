@@ -5,7 +5,6 @@ namespace KioscoInformaticoDesktop
 {
     public partial class MenuPrincipalView : Form
     {
-        public static string jwtToken = string.Empty;
         public MenuPrincipalView()
         {
             InitializeComponent();

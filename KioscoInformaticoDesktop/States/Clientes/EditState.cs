@@ -34,9 +34,8 @@ namespace Desktop.States.Clientes
             _form.clienteCurrent.LocalidadId = (int)_form.comboLocalidades.SelectedValue;
             _form.clienteCurrent.FechaNacimiento = _form.dateTimeFechaNacimiento.Value;
 
-            var token = MenuPrincipalView.jwtToken;
 
-            await _form.clienteService.UpdateAsync(_form.clienteCurrent, token);
+            await _form.clienteService.UpdateAsync(_form.clienteCurrent);
             _form.SetState(_form.InitialDisplayState);
             await _form.currentState.UpdateUI();
         }

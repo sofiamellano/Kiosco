@@ -30,9 +30,8 @@ namespace Desktop.States.Proveedores
             {
                 if (_form.proveedorCurrent != null)
                 {
-                    var token = MenuPrincipalView.jwtToken;
 
-                    await _form.proveedorService.DeleteAsync(_form.proveedorCurrent.Id, token);
+                    await _form.proveedorService.DeleteAsync(_form.proveedorCurrent.Id);
                     _form.SetState(_form.InitialDisplayState);
                     _form.currentState.UpdateUI();
                 }

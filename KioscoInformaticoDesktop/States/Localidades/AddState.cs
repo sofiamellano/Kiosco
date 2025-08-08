@@ -35,9 +35,8 @@ namespace Desktop.States.Localidades
             {
                 Nombre = _form.txtNombre.Text
             };
-            var token = MenuPrincipalView.jwtToken;
 
-            await _form.localidadService.AddAsync(localidad, token);
+            await _form.localidadService.AddAsync(localidad);
             _form.SetState(_form.InitialDisplayState);
             await _form.currentState.UpdateUI();
         }

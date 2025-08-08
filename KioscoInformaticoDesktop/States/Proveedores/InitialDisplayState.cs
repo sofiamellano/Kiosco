@@ -26,18 +26,16 @@ namespace Desktop.States.Proveedores
         public async Task UpdateUI()
         {
             await CargarCombo();
-            var token = MenuPrincipalView.jwtToken;
 
-            var proveedores = await _form.proveedorService.GetAllAsync(token, null);
+            var proveedores = await _form.proveedorService.GetAllAsync(null);
             _form.ListProveedores.DataSource = proveedores;
             _form.dataGridProveedoresView.DataSource = _form.ListProveedores;
             _form.tabControl1.SelectTab(_form.tabPageLista);
         }
         private async Task CargarCombo()
         {
-            var token = MenuPrincipalView.jwtToken;
 
-            _form.comboLocalidades.DataSource = await _form.localidadService.GetAllAsync(token, _form.txtFiltro.Text);
+            _form.comboLocalidades.DataSource = await _form.localidadService.GetAllAsync(_form.txtFiltro.Text);
             _form.comboLocalidades.DisplayMember = "Nombre";
             _form.comboLocalidades.ValueMember = "Id";
             _form.comboLocalidades.SelectedIndex = -1;

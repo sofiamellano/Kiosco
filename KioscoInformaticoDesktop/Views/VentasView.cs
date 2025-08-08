@@ -32,11 +32,10 @@ namespace KioscoInformaticoDesktop.Views
         private async void AjustePantalla()
         {
             #region carga de combos
-            var token = MenuPrincipalView.jwtToken;
 
             await Task.WhenAll(
                 Task.Run(async () => comboBoxClientes.DataSource = await clienteService.GetAllAsync(string.Empty)),
-                Task.Run(async () => comboBoxProductos.DataSource = await productoService.GetAllAsync(token))
+                Task.Run(async () => comboBoxProductos.DataSource = await productoService.GetAllAsync())
             );
             comboBoxClientes.DisplayMember = "Nombre";
             comboBoxClientes.ValueMember = "Id";
@@ -123,11 +122,10 @@ namespace KioscoInformaticoDesktop.Views
             venta.FormaPago = (FormaDePagoEnum)comboBoxFormasDePago.SelectedValue;
             venta.Fecha = DateTime.Now;
 
-            var token = MenuPrincipalView.jwtToken;
 
             venta.Total = numericTotal.Value;
             venta.Iva = venta.Total * 0.21m;
-            var nuevaVenta=await ventaService.AddAsync(venta, token);
+            var nuevaVenta=await ventaService.AddAsync(venta);
             var facturaVentaViewReport = new FacturaVentaViewReport(nuevaVenta);
             facturaVentaViewReport.ShowDialog();
 

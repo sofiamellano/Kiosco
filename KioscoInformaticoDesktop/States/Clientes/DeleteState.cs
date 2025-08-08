@@ -30,9 +30,8 @@ namespace Desktop.States.Clientes
             {
                 if (_form.clienteCurrent != null)
                 {
-                    var token = MenuPrincipalView.jwtToken;
 
-                    await _form.clienteService.DeleteAsync(_form.clienteCurrent.Id, token);
+                    await _form.clienteService.DeleteAsync(_form.clienteCurrent.Id);
                     _form.SetState(_form.InitialDisplayState);
                     _form.currentState.UpdateUI();
                 }

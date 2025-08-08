@@ -30,10 +30,9 @@ namespace KioscoInformaticoDesktop.ViewReports
 
         private async void LocalidadesViewReport_Load(object sender, EventArgs e)
         {
-            var token = MenuPrincipalView.jwtToken;
 
             reporte.LocalReport.ReportEmbeddedResource = "KioscoInformaticoDesktop.Reports.LocalidadesReport.rdlc";
-            var localidades = await localidadService.GetAllAsync(token, string.Empty);
+            var localidades = await localidadService.GetAllAsync(string.Empty);
             reporte.LocalReport.DataSources.Add(new ReportDataSource("DSLocalidades", localidades));
             reporte.SetDisplayMode(DisplayMode.PrintLayout);
             reporte.RefreshReport();

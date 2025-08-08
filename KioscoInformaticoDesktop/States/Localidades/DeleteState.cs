@@ -23,9 +23,8 @@ namespace Desktop.States.Localidades
             var result = MessageBox.Show($"¿Está seguro que desea eliminar la localidad {localidad.Nombre}?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                var token = MenuPrincipalView.jwtToken;
 
-                await _form.localidadService.DeleteAsync(localidad.Id, token);
+                await _form.localidadService.DeleteAsync(localidad.Id);
                 _form.SetState(_form.InitialDisplayState);
                 _form.currentState.UpdateUI();
             }
